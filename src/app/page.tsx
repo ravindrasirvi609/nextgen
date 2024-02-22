@@ -1,5 +1,5 @@
 "use client";
-import HeroSection from "@/components/heroSection";
+import HeroSection from "@/components/HeroSection";
 import { Navbar } from "@/components/navbar";
 import Image from "next/image";
 

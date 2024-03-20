@@ -11,11 +11,11 @@ export function MacbookScrollDemo() {
                                     This Macbook is built with Tailwindcss. <br /> No kidding.
                               </span>
                         }
-                        badge={
-                              <Link href="https://peerlist.io/manuarora">
-                                    <Badge className="h-10 w-10 transform -rotate-12" />
-                              </Link>
-                        }
+                        // badge={
+                        //       <Link href="https://peerlist.io/manuarora">
+                        //             <Badge className="h-10 w-10 transform -rotate-12" />
+                        //       </Link>
+                        // }
                         src={`/NextGENv2.jpg`}
                         showGradient={false}
                   />

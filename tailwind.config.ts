@@ -5,16 +5,18 @@ const {
 } = require("tailwindcss/lib/util/flattenColorPalette");
 const defaultTheme = require("tailwindcss/defaultTheme");
 
+
 function addVariablesForColors({ addBase, theme }: any) {
   let allColors = flattenColorPalette(theme("colors"));
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });
 }
+
 
 const config = {
   content: [
@@ -97,5 +99,6 @@ const config = {
   },
   plugins: [require("tailwindcss-animate"), addVariablesForColors],
 } satisfies Config;
+
 
 export default config;

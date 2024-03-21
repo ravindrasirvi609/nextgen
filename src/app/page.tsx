@@ -14,11 +14,11 @@ export default function Home() {
       {/* <Image src="/nextgen.png" alt="NEXTGen" width={300} height={300} /> */}
       {/* <HeroSection /> */}
       <MacbookScrollDemo />
-      <FeaturedBlogs />
-      <div className="w-full my-8">
+      <div className="w-full">
         <GlobeDemo />
         <GoogleGeminiEffectDemo />
       </div>
+      <FeaturedBlogs />
 
     </main>
   );

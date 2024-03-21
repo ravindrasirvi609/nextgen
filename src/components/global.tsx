@@ -415,8 +415,7 @@ export function GlobeDemo() {
                                     We sell soap worldwide
                               </h2>
                               <p className="text-center text-base md:text-lg font-normal text-neutral-700 dark:text-neutral-200 max-w-md mt-2 mx-auto">
-                                    This globe is interactive and customizable. Have fun with it, and
-                                    don&apos;t forget to share it. :)
+                                    Empowering the next generation of leaders to drive positive change in their communities and beyond
                               </p>
                         </motion.div>
                         <div className="absolute w-full bottom-0 inset-x-0 h-40 bg-gradient-to-b pointer-events-none select-none from-transparent dark:to-black to-white z-40" />

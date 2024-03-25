@@ -18,6 +18,7 @@ export default function Home() {
         <GlobeDemo />
         <GoogleGeminiEffectDemo />
       </div>
+
       <FeaturedBlogs />
 
     </main>

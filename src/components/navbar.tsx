@@ -14,9 +14,9 @@ export function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="About Us">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Mission & Vision</HoveredLink>
-            <HoveredLink href="/interface-design">Our Team</HoveredLink>
-            <HoveredLink href="/seo">Testimonials</HoveredLink>
+            <HoveredLink href="/mission-vision">Mission & Vision</HoveredLink>
+            <HoveredLink href="/team">Our Team</HoveredLink>
+            <HoveredLink href="/testimonials">Testimonials</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Leadership">

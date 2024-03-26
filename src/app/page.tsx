@@ -1,6 +1,7 @@
 "use client";
 import FeaturedBlogs from "@/components/FeaturedBlogs";
 import HeroSection from "@/components/HeroSection";
+import Footer from "@/components/footer";
 import { GoogleGeminiEffectDemo } from "@/components/gemini-effect";
 import { GlobeDemo } from "@/components/global";
 import { MacbookScrollDemo } from "@/components/mackbook";
@@ -20,6 +21,10 @@ export default function Home() {
       </div>
 
       <FeaturedBlogs />
+      <div className="w-full py-8">
+        <Footer />
+
+      </div>
 
     </main>
   );

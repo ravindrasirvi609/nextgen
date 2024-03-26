@@ -11,18 +11,12 @@ export function MacbookScrollDemo() {
                                     Welcome to Nextgen Leaders <br /> Where Tomorrow&apos;s Leaders Meet Today&apos;s Challenges.
                               </span>
                         }
-                        // badge={
-                        //       <Link href="https://peerlist.io/manuarora">
-                        //             <Badge className="h-10 w-10 transform -rotate-12" />
-                        //       </Link>
-                        // }
                         src={`/NextGENv2.jpg`}
                         showGradient={false}
                   />
             </div>
       );
 }
-// Peerlist logo
 const Badge = ({ className }: { className?: string }) => {
       return (
             <svg

@@ -14,7 +14,7 @@ const products = [
     price: 100
   },
   {
-    imageSrc: "/another-image.png",
+    imageSrc: "/nextgen.png",
     alt: "another product",
     height: "400",
     width: "400",
@@ -24,7 +24,7 @@ const products = [
     price: 200
   },
   {
-    imageSrc: "/third-product.png",
+    imageSrc: "/nextgen.png",
     alt: "third product",
     height: "400",
     width: "400",
@@ -34,7 +34,7 @@ const products = [
     price: 150
   },
   {
-    imageSrc: "/fourth-product.png",
+    imageSrc: "/nextgen.png",
     alt: "fourth product",
     height: "400",
     width: "400",
@@ -43,7 +43,6 @@ const products = [
     description: "Description of the fourth product.",
     price: 180
   },
-  // Add more products here if needed
 ];
 
 

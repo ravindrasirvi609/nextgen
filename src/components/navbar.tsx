@@ -11,6 +11,8 @@ export function Navbar({ className }: { className?: string }) {
     >
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Home">
+          <HoveredLink href="/">Home</HoveredLink>
+
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="About Us">
           <div className="flex flex-col space-y-4 text-sm">
@@ -20,20 +22,22 @@ export function Navbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Leadership">
+          <HoveredLink href="/leadership">Leadership</HoveredLink>
 
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Resources">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Articles</HoveredLink>
-            <HoveredLink href="/web-dev">Books</HoveredLink>
-            <HoveredLink href="/interface-design">Videos</HoveredLink>
-            <HoveredLink href="/seo">Podcasts</HoveredLink>
+            <HoveredLink href="/blogs">Articles</HoveredLink>
+            <HoveredLink href="/books">Books</HoveredLink>
+            <HoveredLink href="/videos">Videos</HoveredLink>
+            <HoveredLink href="/podcasts">Podcasts</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Blog/News">
-
+          <HoveredLink href="/blogs/1">Blogs</HoveredLink>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Contact">
+          <HoveredLink href="/contact">Contact</HoveredLink>
 
         </MenuItem>
       </Menu>

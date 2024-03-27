@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import React from 'react';
 
 const Footer: React.FC = () => {
@@ -109,7 +110,11 @@ const Footer: React.FC = () => {
                                           <em>All are MIT License</em></p>
                               </div>
                               <div className="px-4 md:w-1/4 md:ml-auto mt-6 sm:mt-4 md:mt-0">
-                                    <button className="px-4 py-2 bg-purple-800 hover:bg-purple-900 rounded text-white">Get Started</button>
+                                    <Link href="/membership">
+                                          <button className="px-4 py-2 bg-purple-800 hover:bg-purple-900 rounded text-white sm:w-auto">
+                                                Membership
+                                          </button>
+                                    </Link>
                               </div>
                         </div>
                   </div>

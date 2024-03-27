@@ -48,7 +48,7 @@ const products = [
 function FeaturedBlogs() {
   return (
     <>
-      <div className="m-4 sm:m-8 text-xl">Featured Blogs</div>
+      <div className="mx-auto sm:m-8 text-xl">Featured Blogs</div>
       <div className="flex flex-col sm:flex-row sm:flex-wrap">
         {products.map((product, index) => (
           <div key={index} className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-4">

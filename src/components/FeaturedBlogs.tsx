@@ -1,7 +1,6 @@
 import React from "react";
 import { BackgroundGradient } from "./ui/background-gradient";
 import Image from "next/image";
-import { div } from "three/examples/jsm/nodes/Nodes.js";
 const products = [
   {
     imageSrc: "/nextgen.png",

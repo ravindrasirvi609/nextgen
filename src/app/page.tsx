@@ -6,6 +6,7 @@ import { GoogleGeminiEffectDemo } from "@/components/gemini-effect";
 import { GlobeDemo } from "@/components/global";
 import { MacbookScrollDemo } from "@/components/mackbook";
 import { Navbar } from "@/components/navbar";
+import { InfiniteMovingCardsDemo } from "@/components/testimonial-cards";
 import { BackgroundGradient } from "@/components/ui/background-gradient";
 import Image from "next/image";
 
@@ -18,8 +19,9 @@ export default function Home() {
       <div className="w-full">
         <GlobeDemo />
         <GoogleGeminiEffectDemo />
-      </div>
+        <InfiniteMovingCardsDemo />
 
+      </div>
       <FeaturedBlogs />
       <div className="w-full py-8">
         <Footer />

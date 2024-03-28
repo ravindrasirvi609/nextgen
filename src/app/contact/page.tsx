@@ -104,11 +104,6 @@ const Contact: React.FC = () => {
                               <div className="text-green-600">{successMessage}</div>
                         )}
                   </form>
-                  <div className="mt-4">
-                        <h2 className="text-lg font-bold mb-2">Contact Details:</h2>
-                        <p>Name: Your Name</p>
-                        <p>Email: yourname@example.com</p>
-                  </div>
             </div>
       );
 };

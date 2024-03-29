@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Blog: React.FC = ({ params }: any) => {
 const id = params.id;
-console.log('id:', id);
+console.log("id:", id);
 
   const [blog, setBlog] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,7 +21,7 @@ console.log('id:', id);
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.post(`/api/blogDetail?id=${id}`);
+        const response = await axios.get(`/api/blogDetails?id=${id}`);
         setBlog(response.data);
       } catch (error) {
         console.error('Error fetching blog details:', error);

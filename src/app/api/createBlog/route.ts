@@ -1,21 +1,19 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
-import contactForm from "@/models/contactModel";
+import BlogPost from "@/models/blogModel";
 
 connect();
 
 export async function POST(req: NextRequest) {
       try {
-            const userDataFromBody = await req.json();
-            console.log("userDataFromBody:", userDataFromBody);
+            const blogDataFromBody = await req.json();
+            console.log("blogDataFromBody:", blogDataFromBody);
 
-            const newUser = new contactForm(userDataFromBody);
-
-            const savedUser = await newUser.save();
-
-            return NextResponse.json({ message: "User added successfully", user: savedUser });
+            const newBlogPost = new BlogPost(blogDataFromBody);
+            const savedBlogPost = await newBlogPost.save();
+            return NextResponse.json({ message: "Blog post added successfully", blogPost: savedBlogPost });
       } catch (error: any) {
-            console.error("Error adding user:", error);
+            console.error("Error adding blog post:", error);
 
             if (error.name === 'ValidationError') {
                   // Validation errors
@@ -23,7 +21,7 @@ export async function POST(req: NextRequest) {
                   return NextResponse.json({ error: "Validation failed", details: validationErrors }, { status: 400 });
             } else {
                   // Other errors
-                  return NextResponse.json({ error: "Failed to add user" }, { status: 500 });
+                  return NextResponse.json({ error: "Failed to add blog post" }, { status: 500 });
             }
       }
 }

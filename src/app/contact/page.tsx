@@ -18,7 +18,6 @@ const Contact: React.FC = () => {
                   ...formData,
                   [name]: value
             });
-            // Clear the error message if the field is being updated
             setErrors({
                   ...errors,
                   [name]: ''
@@ -34,10 +33,8 @@ const Contact: React.FC = () => {
                   setFormData({ name: '', email: '', message: '' }); // Clear form fields on successful submission
             } catch (error: any) {
                   if (error.response) {
-                        // If server responds with validation errors
                         setErrors(error.response.data.errors);
                   } else {
-                        // If there's a network error or similar
                         console.error('An error occurred:', error.message);
                   }
             }

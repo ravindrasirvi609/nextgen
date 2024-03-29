@@ -8,7 +8,9 @@ export function MacbookScrollDemo() {
                   <MacbookScroll
                         title={
                               <span>
-                                    Welcome to Nextgen Leaders <br /> Where Tomorrow&apos;s Leaders Meet Today&apos;s Challenges.
+                                    <h1 className="font-bold text-3xl">Welcome to NextGEN Leaders</h1>
+                                    <br />
+                                    <span className="text-xl">Where Tomorrow&apos;s Leaders Meet Today&apos;s Challenges.</span>
                               </span>
                         }
                         src={`/NextGENv2.jpg`}

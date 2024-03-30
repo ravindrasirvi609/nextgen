@@ -1,4 +1,4 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextApiResponse } from "next";
 import BlogPost from "@/models/blogModel";
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";

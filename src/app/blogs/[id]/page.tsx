@@ -1,11 +1,9 @@
-"use client"
-import React, { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
-import axios from 'axios';
+"use client";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 const Blog: React.FC = ({ params }: any) => {
-const id = params.id;
-console.log("id:", id);
+  const id = params.id;
 
   const [blog, setBlog] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -21,11 +19,11 @@ console.log("id:", id);
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.post(`/api/blogDetails`, {id :id} );
+        const response = await axios.post(`/api/blogDetails`, { id: id });
         setBlog(response.data);
       } catch (error) {
-        console.error('Error fetching blog details:', error);
-        setError('Failed to load blog post. Please try again later.');
+        console.error("Error fetching blog details:", error);
+        setError("Failed to load blog post. Please try again later.");
       } finally {
         setIsLoading(false);
       }
@@ -45,7 +43,9 @@ console.log("id:", id);
           <p className="text-red-500">{error}</p>
         ) : blog ? (
           <>
-            <h1 className="text-2xl text-gray-800 font-bold mb-4">{blog.title}</h1>
+            <h1 className="text-2xl text-gray-800 font-bold mb-4">
+              {blog.title}
+            </h1>
             <p className="text-gray-700">{blog.content}</p>
           </>
         ) : (

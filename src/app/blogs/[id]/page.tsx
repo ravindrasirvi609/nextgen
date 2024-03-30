@@ -21,7 +21,7 @@ console.log("id:", id);
       setIsLoading(true);
       setError(null);
       try {
-        const response = await axios.get(`/api/blogDetails?id=${id}`);
+        const response = await axios.post(`/api/blogDetails`, {id :id} );
         setBlog(response.data);
       } catch (error) {
         console.error('Error fetching blog details:', error);

@@ -1,11 +1,10 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import BlogPost from "@/models/blogModel";
 import { NextResponse } from "next/server";
 import { connect } from "@/dbConfig/dbConfig";
 
 connect();
 
-export async function GET(req: NextApiRequest, res: NextApiResponse) {
+export async function GET() {
   try {
     const blogPosts = await BlogPost.find().sort({ createdAt: -1 });
     return NextResponse.json(blogPosts);

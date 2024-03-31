@@ -1,26 +1,35 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import { ErrorMessage } from '@hookform/error-message';
 
 const CreateBlogPage: React.FC = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const [loading, setLoading] = useState(false);
+  const [successMessage, setSuccessMessage] = useState('');
 
   const onSubmit = async (data: any) => {
+    setLoading(true); // Set loading to true while submitting the form
     try {
       const response = await axios.post('/api/createBlog', data);
       console.log("Blog post created successfully:", response.data);
+      setSuccessMessage('Blog post created successfully');
+      reset(); // Reset the form fields after successful submission
       // Handle success, e.g., show a success message or redirect to another page
     } catch (error) {
       console.error("Error creating blog post:", error);
       // Handle error, e.g., show an error message to the user
+    } finally {
+      setLoading(false); // Set loading back to false after form submission
     }
   };
 
   return (
     <div className="container mx-auto py-44">
       <h1 className="text-4xl text-center font-bold mb-4">Create Blog</h1>
+      {loading && <div>Loading...</div>}
+      {successMessage && <div className="text-green-600">{successMessage}</div>}
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label htmlFor="title" className="block font-bold mb-2">Title</label>

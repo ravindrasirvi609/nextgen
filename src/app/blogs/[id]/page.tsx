@@ -7,8 +7,15 @@ const Blog: React.FC = ({ params }: any) => {
 
   const [blog, setBlog] = useState<BlogPost | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isCommentLoading, setIsCommentLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [comments, setComments] = useState<{ content: string; createdAt: Date }[]>([]);
+  const [comments, setComments] = useState<
+    {
+      author: string;
+      content: string;
+      createdAt: Date;
+    }[]
+  >([]);
 
   interface BlogPost {
     title: string;
@@ -35,14 +42,32 @@ const Blog: React.FC = ({ params }: any) => {
     }
   }, [id]);
 
+  useEffect(() => {
+    const fetchComment = async () => {
+      setIsCommentLoading(true);
+      setError(null);
+      try {
+        const response = await axios.post(`/api/commentList`, { id: id }); // Corrected query parameter syntax
+        console.log("response", response.data);
+        setComments(response.data);
+      } catch (error) {
+        console.error("Error fetching comments:", error); // Corrected console log message
+        setError("Failed to load comments. Please try again later.");
+      } finally {
+        setIsCommentLoading(false);
+      }
+    };
+
+    fetchComment();
+  }, [id]);
+
   const handleAddComment = async (comment: string) => {
     try {
       const newComment = {
         content: comment,
         createdAt: new Date(),
-        blogId: id,
+        blog: id,
         author: "Anonymous",
-
       };
       await onSubmit(newComment, resetForm);
       setComments((prevComments) => [...prevComments, newComment]);
@@ -64,6 +89,17 @@ const Blog: React.FC = ({ params }: any) => {
   const resetForm = () => {
     // Reset form logic here
   };
+
+  function formatDate(dateString: string | number | Date) {
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, "0");
+    const month = (date.getMonth() + 1).toString().padStart(2, "0");
+    const year = date.getFullYear();
+    const hours = date.getHours().toString().padStart(2, "0");
+    const minutes = date.getMinutes().toString().padStart(2, "0");
+
+    return `${day}/${month}/${year} : ${hours}:${minutes}`;
+  }
 
   return (
     <div className="bg-gray-100">
@@ -106,15 +142,18 @@ const Blog: React.FC = ({ params }: any) => {
             }}
           />
         </div>
-        <ul>
-          {comments.map((comment, index) => (
-            <li key={index} className="mb-2 text-gray-700">
-              <div>{comment.content}</div>
-              <div className="text-xs text-gray-500">
-                {comment.createdAt.toLocaleString()}
-              </div>
-            </li>
-          ))}
+        <ul className="pb-32">
+          {Array.isArray(comments) &&
+            comments.map((comment, index) => (
+              <li key={index} className="mb-2 text-gray-700">
+                <div>
+                  <strong>{comment.author}</strong>: {comment.content}
+                </div>
+                <div className="text-xs text-gray-500">
+                  {formatDate(comment.createdAt)}
+                </div>
+              </li>
+            ))}
         </ul>
       </div>
     </div>

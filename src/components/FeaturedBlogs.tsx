@@ -12,8 +12,8 @@ function FeaturedBlogs() {
       try {
         const response = await axios.get("/api/blogList");
         console.log("Blogs:", response.data);
-        
-        setBlogs(response.data);
+
+        setBlogs(response.data.slice(0, 5));
       } catch (error) {
         console.error("Error fetching blogs:", error);
         // Handle error, e.g., show an error message to the user

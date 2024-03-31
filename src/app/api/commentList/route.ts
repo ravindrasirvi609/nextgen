@@ -1,4 +1,3 @@
-import { NextApiRequest, NextApiResponse } from "next";
 import Comment from "@/models/commentModel";
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";

@@ -10,18 +10,16 @@ const CreateBlogPage: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState('');
 
   const onSubmit = async (data: any) => {
-    setLoading(true); // Set loading to true while submitting the form
+    setLoading(true);
     try {
       const response = await axios.post('/api/createBlog', data);
       console.log("Blog post created successfully:", response.data);
       setSuccessMessage('Blog post created successfully');
-      reset(); // Reset the form fields after successful submission
-      // Handle success, e.g., show a success message or redirect to another page
+      reset(); 
     } catch (error) {
       console.error("Error creating blog post:", error);
-      // Handle error, e.g., show an error message to the user
     } finally {
-      setLoading(false); // Set loading back to false after form submission
+      setLoading(false);
     }
   };
 

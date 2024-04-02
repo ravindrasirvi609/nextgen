@@ -36,13 +36,12 @@ export async function POST(req: NextRequest) {
       endDate,
     });
 
-    await advertisement.save();
+    const newResonse = await advertisement.save();
+    if (res.success && res.result) {
+      return NextResponse.json({
+        message: "success",
+        data: newResonse,
+      });
+    } else return NextResponse.json({ message: "failure" });
   }
-
-  if (res.success && res.result) {
-    return NextResponse.json({
-      message: "success",
-      imgUrl: res.result.secure_url,
-    });
-  } else return NextResponse.json({ message: "failure" });
 }

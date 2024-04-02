@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
-const advertisementSchema = new mongoose.Schema({
+const { Schema } = mongoose;
+
+const advertisementSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -40,6 +42,8 @@ const advertisementSchema = new mongoose.Schema({
   },
 });
 
-const Advertisement = mongoose.model("Advertisement", advertisementSchema);
+const Advertisement =
+  mongoose.models.Advertisement ||
+  mongoose.model("Advertisement", advertisementSchema);
 
-module.exports = Advertisement;
+export default Advertisement;

@@ -5,6 +5,9 @@ const nextConfig = {
 
     return config;
   },
+  images: {
+    domains: ["unsplash.com", "images.unsplash.com", "aceternity.com"],
+  },
 };
 
 export default nextConfig;

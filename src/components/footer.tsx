@@ -10,23 +10,21 @@ const Footer: React.FC = () => {
                                     <h5 className="text-xl font-bold mb-6">Features</h5>
                                     <ul className="list-none footer-links">
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Cool stuff</a>
+                                                <a href="/terms-condition" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Terms & Conditions</a>
                                           </li>
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Random feature</a>
+                                                <a href="privacy-policy" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Privacy Policy</a>
                                           </li>
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Team feature</a>
+                                                <a href="refund-policy" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Refund Policy</a>
                                           </li>
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Stuff for developers</a>
+                                                <a href="shipping-policy" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Shipping Policy</a>
                                           </li>
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Another one</a>
+                                                <a href="faq" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">FAQ</a>
                                           </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Last time</a>
-                                          </li>
+                                          
                                     </ul>
                               </div>
                               <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">

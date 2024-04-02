@@ -1,16 +1,22 @@
 "use client";
 import axios from "axios";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
 const AdvertigmentWithUs: React.FC = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
+  const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
   const onSubmit = async (data: any) => {
+    setLoading(true);
+
     console.log(data);
     const formData = new FormData();
     formData.append("name", data.name);
@@ -34,18 +40,22 @@ const AdvertigmentWithUs: React.FC = () => {
 
       if (response) {
         console.log("Form submitted successfully");
+        setSuccessMessage("Form submitted successfully!");
+        reset();
       } else {
         console.error("Form submission failed");
       }
     } catch (error) {
       console.error("Error occurred during submission:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen mt-60 pt-96">
+    <div className="flex flex-col items-center justify-center min-h-screen mt-24">
       <h1 className="text-3xl font-bold mb-4">Advertise With Us</h1>
-      <form className="w-1/2" onSubmit={handleSubmit(onSubmit)}>
+      <form className="w-full md:w-1/2" onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label htmlFor="name" className="block mb-2">
             Name:
@@ -57,7 +67,7 @@ const AdvertigmentWithUs: React.FC = () => {
             className="w-full border border-gray-300 rounded py-2 px-4 text-gray-900"
           />
           {typeof errors.name === "string" && (
-            <p className="text-red-500">{errors.name}</p>
+            <p className="text-red-500">Name is Required</p>
           )}
         </div>
         <div className="mb-4">
@@ -165,63 +175,17 @@ const AdvertigmentWithUs: React.FC = () => {
             <p className="text-red-500">{errors.endDate}</p>
           )}
         </div>
-        {/* <div className="mb-4">
-          <label htmlFor="targetAudience" className="block mb-2">
-            Target Audience:
-          </label>
-          <input
-            type="text"
-            id="targetAudience"
-            {...register("targetAudience", {
-              required: "Target Audience is required",
-            })}
-            className="w-full border border-gray-300 rounded py-2 px-4 text-gray-900"
-          />
-          {typeof errors.targetAudience === "string" && (
-            <p className="text-red-500">{errors.targetAudience}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="budget" className="block mb-2">
-            Budget:
-          </label>
-          <input
-            type="number"
-            id="budget"
-            {...register("budget", {
-              required: "Budget is required",
-              min: { value: 0, message: "Budget must be a positive number" },
-            })}
-            className="w-full border border-gray-300 rounded py-2 px-4 text-gray-900"
-          />
-          {typeof errors.budget === "string" && (
-            <p className="text-red-500">{errors.budget}</p>
-          )}
-        </div>
-        <div className="mb-4">
-          <label htmlFor="status" className="block mb-2">
-            Status:
-          </label>
-          <select
-            id="status"
-            {...register("status", { required: "Status is required" })}
-            className="w-full border border-gray-300 rounded py-2 px-4 text-gray-900"
-          >
-            <option value="active">Active</option>
-            <option value="paused">Paused</option>
-            <option value="expired">Expired</option>
-          </select>
-          {typeof errors.status === "string" && (
-            <p className="text-red-500">{errors.status}</p>
-          )}
-        </div> */}
         <button
           type="submit"
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4"
         >
-          Submit
+          {loading ? "Submitting..." : "Submit"}
         </button>
+        {loading && <div className="mt-4">Loading...</div>}
       </form>
+      {successMessage && (
+        <p className="text-green-500 mt-4">{successMessage}</p>
+      )}
     </div>
   );
 };

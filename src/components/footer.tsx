@@ -7,11 +7,9 @@ const Footer: React.FC = () => {
                   <div className="container mx-auto px-4">
                         <div className="sm:flex sm:flex-wrap sm:-mx-4 md:py-4">
                               <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6">
-                                    <h5 className="text-xl font-bold mb-6">Features</h5>
+                                    <h5 className="text-xl font-bold mb-6">Policies</h5>
                                     <ul className="list-none footer-links">
-                                          <li className="mb-2">
-                                                <a href="/terms-condition" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Terms & Conditions</a>
-                                          </li>
+                                          
                                           <li className="mb-2">
                                                 <a href="privacy-policy" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Privacy Policy</a>
                                           </li>
@@ -21,26 +19,18 @@ const Footer: React.FC = () => {
                                           <li className="mb-2">
                                                 <a href="shipping-policy" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Shipping Policy</a>
                                           </li>
-                                          <li className="mb-2">
-                                                <a href="faq" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">FAQ</a>
-                                          </li>
+                                          
                                           
                                     </ul>
                               </div>
                               <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 sm:mt-0">
-                                    <h5 className="text-xl font-bold mb-6">Resources</h5>
+                                    <h5 className="text-xl font-bold mb-6">Features</h5>
                                     <ul className="list-none footer-links">
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Resource</a>
+                                                <a href="/terms-condition" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Terms & Conditions</a>
                                           </li>
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Resource name</a>
-                                          </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Another resource</a>
-                                          </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Final resource</a>
+                                                <a href="faq" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">FAQ</a>
                                           </li>
                                     </ul>
                               </div>
@@ -48,30 +38,18 @@ const Footer: React.FC = () => {
                                     <h5 className="text-xl font-bold mb-6">About</h5>
                                     <ul className="list-none footer-links">
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Team</a>
+                                                <a href="/team" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Team</a>
                                           </li>
-                                          <li className="mb-2">
+                                          {/* <li className="mb-2">
                                                 <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Locations</a>
-                                          </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Privacy</a>
-                                          </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Terms</a>
-                                          </li>
+                                          </li> */}
                                     </ul>
                               </div>
                               <div className="px-4 sm:w-1/2 md:w-1/4 xl:w-1/6 mt-8 md:mt-0">
                                     <h5 className="text-xl font-bold mb-6">Help</h5>
                                     <ul className="list-none footer-links">
                                           <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Support</a>
-                                          </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Help Center</a>
-                                          </li>
-                                          <li className="mb-2">
-                                                <a href="#" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Contact Us</a>
+                                                <a href="/contact" className="border-b border-solid border-transparent hover:border-purple-800 hover:text-purple-800">Contact Us</a>
                                           </li>
                                     </ul>
                               </div>
@@ -79,13 +57,13 @@ const Footer: React.FC = () => {
                                     <h5 className="text-xl font-bold mb-6 sm:text-center xl:text-left">Stay connected</h5>
                                     <div className="flex sm:justify-center xl:justify-start">
                                           <a href="" className="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 text-gray-600 hover:text-white hover:bg-blue-600 hover:border-blue-600">
-                                                <i className="fab fa-facebook"></i>
+                                                <i className="fab fa-facebook">F</i>
                                           </a>
                                           <a href="" className="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-blue-400 hover:border-blue-400">
-                                                <i className="fab fa-twitter"></i>
+                                                <i className="fab fa-twitter">X</i>
                                           </a>
                                           <a href="" className="w-8 h-8 border border-2 border-gray-400 rounded-full text-center py-1 ml-2 text-gray-600 hover:text-white hover:bg-red-600 hover:border-red-600">
-                                                <i className="fab fa-google-plus-g"></i>
+                                                <i className="fab fa-google-plus-g">G</i>
                                           </a>
                                     </div>
                               </div>
@@ -98,14 +76,15 @@ const Footer: React.FC = () => {
                               <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
                                     <h6 className="font-bold mb-2">Address</h6>
                                     <address className="not-italic mb-4 text-sm">
-                                          Pali<br />
+                                          17, mayank Nagar<br />
+                                          Naya Gaon, Pali,<br />
                                           Rajsthan, IND 306401
                                     </address>
                               </div>
                               <div className="px-4 sm:w-1/2 md:w-1/4 mt-4 md:mt-0">
                                     <h6 className="font-bold mb-2">Free Resources</h6>
-                                    <p className="mb-4 text-sm">Use our HTML blocks for <strong>FREE</strong>.<br />
-                                          <em>All are MIT License</em></p>
+                                    <p className="mb-4 text-sm">All the right reseved to NextGEN leaders<br />
+                                         </p>
                               </div>
                               <div className="px-4 md:w-1/4 md:ml-auto mt-6 sm:mt-4 md:mt-0">
                                     <Link href="/membership">

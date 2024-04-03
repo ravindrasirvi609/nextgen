@@ -113,7 +113,7 @@ const Blog: React.FC = ({ params }: any) => {
             <h1 className="text-2xl text-gray-800 font-bold mb-4">
               {blog.title}
             </h1>
-            <p className="text-gray-700">{blog.content}</p>
+            <p className="text-gray-700 text-justify">{blog.content}</p>
           </>
         ) : (
           <p>Blog post not found.</p>

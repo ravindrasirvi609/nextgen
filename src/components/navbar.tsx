@@ -33,7 +33,7 @@ export function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Blog/News">
           <div className="hidden sm:flex flex-col sm:space-y-4 text-sm">
-            <HoveredLink href="/blogs/1">Blogs</HoveredLink>
+            <HoveredLink href="/blogs">Blogs</HoveredLink>
             <HoveredLink href="/createBlog">Create Blog</HoveredLink>
           </div>
         </MenuItem>

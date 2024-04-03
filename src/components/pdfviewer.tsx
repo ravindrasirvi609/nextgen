@@ -3,7 +3,7 @@ import { Document, Page } from "react-pdf";
 import { pdfjs } from "react-pdf";
 
 const PDFViewer = ({ src }: { src: string }) => {
-  const [numPages, setNumPages] = useState<number | null>(0);
+  const [numPages, setNumPages] = useState<number | null>(null);
   const [pageNumber, setPageNumber] = useState(1);
 
   function onDocumentLoadSuccess({ numPages }: { numPages: number }) {
@@ -20,13 +20,13 @@ const PDFViewer = ({ src }: { src: string }) => {
 
   const handlePrevPage = () => {
     if (pageNumber > 1 && numPages !== null) {
-      setPageNumber(pageNumber - 1);
+      setPageNumber((prevPageNumber) => prevPageNumber - 1);
     }
   };
 
   const handleNextPage = () => {
-    if (pageNumber < numPages! && numPages !== null) {
-      setPageNumber(pageNumber + 1);
+    if (pageNumber < (numPages ?? 1)) {
+      setPageNumber((prevPageNumber) => prevPageNumber + 1);
     }
   };
 
@@ -38,12 +38,10 @@ const PDFViewer = ({ src }: { src: string }) => {
         onError={onDocumentError}
         className="mb-4"
       >
-        {Array.from(new Array(numPages), (el, index) => (
-          <Page key={`page_${index + 1}`} pageNumber={index + 1} />
-        ))}
+        <Page pageNumber={pageNumber} />
       </Document>
       <p className="mb-2">
-        Page {pageNumber} of {numPages}
+        Page {pageNumber} of {numPages ?? "..."}
       </p>
       <div className="flex">
         <button
@@ -55,7 +53,7 @@ const PDFViewer = ({ src }: { src: string }) => {
         </button>
         <button
           onClick={handleNextPage}
-          disabled={pageNumber === numPages}
+          disabled={pageNumber === (numPages ?? 1)}
           className="px-4 py-2 bg-blue-500 text-white rounded"
         >
           Next Page

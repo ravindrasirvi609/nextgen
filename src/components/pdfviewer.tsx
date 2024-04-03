@@ -31,25 +31,36 @@ const PDFViewer = ({ src }: { src: string }) => {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <Document
         file={src}
         onLoadSuccess={onDocumentLoadSuccess}
         onError={onDocumentError}
+        className="mb-4"
       >
         {Array.from(new Array(numPages), (el, index) => (
           <Page key={`page_${index + 1}`} pageNumber={index + 1} />
         ))}
       </Document>
-      <p>
+      <p className="mb-2">
         Page {pageNumber} of {numPages}
       </p>
-      <button onClick={handlePrevPage} disabled={pageNumber === 1}>
-        Previous Page
-      </button>
-      <button onClick={handleNextPage} disabled={pageNumber === numPages}>
-        Next Page
-      </button>
+      <div className="flex">
+        <button
+          onClick={handlePrevPage}
+          disabled={pageNumber === 1}
+          className="mr-2 px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Previous Page
+        </button>
+        <button
+          onClick={handleNextPage}
+          disabled={pageNumber === numPages}
+          className="px-4 py-2 bg-blue-500 text-white rounded"
+        >
+          Next Page
+        </button>
+      </div>
     </div>
   );
 };

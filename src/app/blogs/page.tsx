@@ -52,7 +52,7 @@ const Blogs: React.FC = () => {
               <Link href={`/blogs/${blog._id}`}>
                 <div className="relative h-48 mb-4 overflow-hidden rounded-lg transition-transform duration-300 hover:scale-105">
                   <Image
-                    src="https://images.unsplash.com/photo-1492681290082-e932832941e6?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fHBlcnNvbnxlbnwwfHwwfHx8MA%3D%3D"
+                    src={blog.imageUrl}
                     alt={blog.title}
                     layout="fill"
                     className="object-cover transition-transform duration-300 hover:scale-105"

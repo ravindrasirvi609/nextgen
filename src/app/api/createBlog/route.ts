@@ -1,27 +1,60 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
 import BlogPost from "@/models/blogModel";
+import { uploadToCloudinary } from "@/cloudinaryConfig/cloudinaryConfig";
 
 connect();
 
 export async function POST(req: NextRequest) {
-      try {
-            const blogDataFromBody = await req.json();
-            console.log("blogDataFromBody:", blogDataFromBody);
+  try {
+    const formData = await req.formData();
+    const file = formData.get("file") as File;
+    const fileBuffer = await file.arrayBuffer();
+    const mimeType = file.type;
+    const encoding = "base64";
+    const base64Data = Buffer.from(fileBuffer).toString("base64");
+    const fileUri = "data:" + mimeType + ";" + encoding + "," + base64Data;
+    const res = await uploadToCloudinary(fileUri, file.name);
+    console.log("Cloudinary response:", res);
 
-            const newBlogPost = new BlogPost(blogDataFromBody);
-            const savedBlogPost = await newBlogPost.save();
-            return NextResponse.json({ message: "Blog post added successfully", blogPost: savedBlogPost });
-      } catch (error: any) {
-            console.error("Error adding blog post:", error);
+    let message = "failure";
+    let imgUrl = "";
 
-            if (error.name === 'ValidationError') {
-                  // Validation errors
-                  const validationErrors = Object.values(error.errors).map((error: any) => error.message);
-                  return NextResponse.json({ error: "Validation failed", details: validationErrors }, { status: 400 });
-            } else {
-                  // Other errors
-                  return NextResponse.json({ error: "Failed to add blog post" }, { status: 500 });
-            }
-      }
+    if (res.success && res.result) {
+      message = "success";
+      imgUrl = res.result.secure_url;
+
+      const { title, content } = Object.fromEntries(formData.entries());
+
+      const newBlogPost = new BlogPost({
+        title,
+        content,
+        imageUrl: imgUrl,
+      });
+
+      const savedBlogPost = await newBlogPost.save();
+      console.log("Blog post added successfully:", savedBlogPost);
+      return NextResponse.json({
+        message: "Blog post added successfully",
+        blogPost: savedBlogPost,
+      });
+    }
+  } catch (error: any) {
+    console.error("Error adding blog post:", error);
+
+    if (error.name === "ValidationError") {
+      const validationErrors = Object.values(error.errors).map(
+        (error: any) => error.message
+      );
+      return NextResponse.json(
+        { error: "Validation failed", details: validationErrors },
+        { status: 400 }
+      );
+    } else {
+      return NextResponse.json(
+        { error: "Failed to add blog post" },
+        { status: 500 }
+      );
+    }
+  }
 }

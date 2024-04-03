@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 const Blog: React.FC = ({ params }: any) => {
   const id = params.id;
@@ -18,8 +19,11 @@ const Blog: React.FC = ({ params }: any) => {
   >([]);
 
   interface BlogPost {
+    [x: string]: string | number | Date;
     title: string;
     content: string;
+    author: string;
+    imageUrl: string;
   }
 
   useEffect(() => {
@@ -102,37 +106,53 @@ const Blog: React.FC = ({ params }: any) => {
   }
 
   return (
-    <div className="bg-gray-100">
-      <div className="container mx-auto py-44">
+    <div className="bg-gray-900">
+      <div className="container mx-auto py-36">
         {isLoading ? (
-          <p>Loading blog post...</p>
+          <p className="text-center text-gray-700">Loading blog post...</p>
         ) : error ? (
-          <p className="text-red-500">{error}</p>
+          <p className="text-center text-red-500">{error}</p>
         ) : blog ? (
-          <>
-            <h1 className="text-2xl text-gray-800 font-bold mb-4">
-              {blog.title}
-            </h1>
-            <p className="text-gray-700 text-justify">{blog.content}</p>
-          </>
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-lg overflow-hidden">
+            <div className="relative h-72">
+              <Image
+                src={blog.imageUrl}
+                alt={blog.title}
+                layout="fill"
+                objectFit="cover"
+                className="rounded-t-lg"
+              />
+            </div>
+            <div className="p-6">
+              <h1 className="text-3xl text-gray-800 font-bold mb-4">
+                {blog.title}
+              </h1>
+              <p className="text-gray-500 mb-4">
+                {formatDate(blog.createdAt)} by {blog.author}
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                {blog.content}
+              </p>
+            </div>
+          </div>
         ) : (
-          <p>Blog post not found.</p>
+          <p className="text-center text-gray-700">Blog post not found.</p>
         )}
       </div>
       {/* Comment Section */}
-      <div className="m-16">
-        <h2 className="text-2xl text-gray-800 font-bold mb-4">Comments</h2>
-        <div className="mb-4">
+      <div className="container mx-auto px-4 py-8">
+        <h2 className="text-3xl font-bold text-gray-500 mb-4">Comments</h2>
+        <div className="mb-8">
           <label
             htmlFor="comment"
-            className="block font-bold mb-2 text-gray-800"
+            className="block font-bold mb-2 text-gray-600"
           >
             Add Comment
           </label>
           <input
             type="text"
             id="comment"
-            className="border border-gray-300 text-gray-700 rounded w-full p-2"
+            className="border border-gray-300 text-gray-700 rounded w-full px-4 py-2 focus:outline-none focus:border-blue-500"
             placeholder="Type your comment..."
             onKeyDown={(e) => {
               if (e.key === "Enter") {
@@ -142,11 +162,11 @@ const Blog: React.FC = ({ params }: any) => {
             }}
           />
         </div>
-        <ul className="pb-32">
+        <ul>
           {Array.isArray(comments) &&
             comments.map((comment, index) => (
-              <li key={index} className="mb-2 text-gray-700">
-                <div>
+              <li key={index} className="bg-gray-100 rounded-lg p-4 mb-4">
+                <div className="text-gray-800 mb-2">
                   <strong>{comment.author}</strong>: {comment.content}
                 </div>
                 <div className="text-xs text-gray-500">

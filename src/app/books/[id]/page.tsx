@@ -6,7 +6,7 @@ interface PageProps {
   pdfUrl: string;
 }
 
-const Page: React.FC<PageProps> = ({ pdfUrl }) => {
+const BooksById = () => {
   const pdfFileUrl = "/dummy.pdf";
   return (
     <div className="py-44">
@@ -16,4 +16,4 @@ const Page: React.FC<PageProps> = ({ pdfUrl }) => {
   );
 };
 
-export default Page;
+export default BooksById;

@@ -1,13 +1,36 @@
-import React from 'react';
+"use client";
+import { ParallaxScroll } from "@/components/ui/parallax-scroll";
+import React, { useEffect, useState } from "react";
+
+const images = [
+  "https://www.youtube.com/watch?v=5L7WbNHzcRw",
+  "https://youtu.be/dTuHXUt1weQ",
+  "https://www.youtube.com/watch?v=8rMsdkDeqfc",
+  "https://www.youtube.com/watch?v=UQFGeyj5oXo",
+  "https://www.youtube.com/watch?v=XQPqD71VkMg",
+  "https://www.youtube.com/watch?v=0I647GU3Jsc",
+  "https://youtu.be/dTuHXUt1weQ",
+  "https://www.youtube.com/watch?v=8rMsdkDeqfc",
+  "https://www.youtube.com/watch?v=XQPqD71VkMg",
+  "https://www.youtube.com/watch?v=UQFGeyj5oXo",
+  "https://www.youtube.com/watch?v=5L7WbNHzcRw",
+  "https://youtu.be/dTuHXUt1weQ",
+  "https://www.youtube.com/watch?v=8rMsdkDeqfc",
+  "https://www.youtube.com/watch?v=UQFGeyj5oXo",
+  "https://www.youtube.com/watch?v=0I647GU3Jsc",
+];
 
 const Videos: React.FC = () => {
-      return (
-            <div className="grid grid-cols-3 gap-4 py-44">
-                  <div className="bg-gray-200 p-4 text-gray-800">Video 1</div>
-                  <div className="bg-gray-200 p-4 text-gray-800">Video 2</div>
-                  <div className="bg-gray-200 p-4 text-gray-800">Video 3</div>
-            </div>
-      );
+  const [playerReady, setPlayerReady] = useState(false);
+
+  useEffect(() => {
+    setTimeout(() => setPlayerReady(true), 1000);
+  }, []);
+  return (
+    <div className="py-44">
+      <ParallaxScroll images={images} />
+    </div>
+  );
 };
 
 export default Videos;

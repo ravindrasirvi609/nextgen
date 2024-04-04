@@ -6,7 +6,7 @@ const nextConfig = {
     return config;
   },
   images: {
-    domains: ["unsplash.com", "images.unsplash.com", "aceternity.com", "res.cloudinary.com", "cdn.pixabay.com", "cdn.dribbble.com", "cdn.fakercloud.com", "cdn.iconscout"],
+    domains: ["unsplash.com", "images.unsplash.com", "aceternity.com", "res.cloudinary.com", "cdn.pixabay.com", "cdn.dribbble.com", "cdn.fakercloud.com", "cdn.iconscout", "www.youtube.com"],
   },
 };
 

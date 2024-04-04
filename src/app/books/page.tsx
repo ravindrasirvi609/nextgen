@@ -10,94 +10,94 @@ const Books = () => {
   const products = [
     {
       title: "Moonbeam",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
     },
     {
       title: "Cursor",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/cursor.png",
     },
     {
       title: "Rogue",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/rogue.png",
     },
 
     {
       title: "Editorially",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/editorially.png",
     },
     {
       title: "Editrix AI",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/editrix.png",
     },
     {
       title: "Pixel Perfect",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
     },
 
     {
       title: "Algochurn",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
     },
     {
       title: "Aceternity UI",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
     },
     {
       title: "Tailwind Master Kit",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
     },
     {
       title: "SmartBridge",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
     },
     {
       title: "Renderwork Studio",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
     },
 
     {
       title: "Creme Digital",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/cremedigital.png",
     },
     {
       title: "Golden Bells Academy",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/goldenbellsacademy.png",
     },
     {
       title: "Invoker Labs",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/invoker.png",
     },
     {
       title: "E Free Invoice",
-      link: "",
+      link: "/books/1",
       thumbnail:
         "https://aceternity.com/images/products/thumbnails/new/efreeinvoice.png",
     },

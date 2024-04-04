@@ -4,10 +4,6 @@ import React, { useEffect, useState } from "react";
 import "react-pdf/dist/esm/Page/TextLayer.css";
 import "react-pdf/dist/esm/Page/AnnotationLayer.css";
 
-interface PageProps {
-  pdfUrl: string;
-}
-
 const BooksById = () => {
   const pdfFileUrl = "/dummy.pdf";
   return (

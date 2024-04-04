@@ -130,9 +130,10 @@ const Blog: React.FC = ({ params }: any) => {
               <p className="text-gray-500 mb-4">
                 {formatDate(blog.createdAt)} by {blog.author}
               </p>
-              <p className="text-gray-700 text-lg leading-relaxed">
-                {blog.content}
-              </p>
+              <p
+                className="text-gray-700 text-lg leading-relaxed"
+                dangerouslySetInnerHTML={{ __html: blog.content }}
+              />
             </div>
           </div>
         ) : (

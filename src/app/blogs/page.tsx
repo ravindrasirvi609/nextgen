@@ -16,12 +16,17 @@ const Blogs: React.FC = () => {
         setBlogs(response.data);
       } catch (error) {
         console.error("Error fetching blogs:", error);
-        // Handle error, e.g., show an error message to the user
       }
     };
 
     fetchBlogs();
   }, []);
+
+  const limitContent = (content: string, limit: number) => {
+    const words = content.split(" ");
+    const limitedWords = words.slice(0, limit);
+    return limitedWords.join(" ");
+  };
 
   function formatDate(dateString: string | number | Date) {
     const date = new Date(dateString);
@@ -62,9 +67,13 @@ const Blogs: React.FC = () => {
                 <h2 className="text-xl font-bold mb-2 text-gray-900">
                   {blog.title}
                 </h2>
-                <p className="text-gray-700 mb-4">
-                  {blog.content.split(" ").slice(0, 30).join(" ")}
-                </p>
+                <p
+                  className="text-gray-700 mb-4"
+                  dangerouslySetInnerHTML={{
+                    __html: limitContent(blog.content, 30),
+                  }}
+                />
+
                 <p className="text-gray-500">Author: {blog.author}</p>
                 <p className="text-gray-600">
                   Created at: {formatDate(blog.createdAt)}

@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { ErrorMessage } from "@hookform/error-message";
+import { CKEditor } from "@ckeditor/ckeditor5-react";
+import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
 
 const CreateBlogPage: React.FC = () => {
   const {
@@ -13,11 +15,12 @@ const CreateBlogPage: React.FC = () => {
   } = useForm();
   const [loading, setLoading] = useState(false);
   const [successMessage, setSuccessMessage] = useState("");
+  const [editorData, setEditorData] = useState(""); // State to manage editor content
 
   const onSubmit = async (data: any) => {
     const formData = new FormData();
     formData.append("title", data.title);
-    formData.append("content", data.content);
+    formData.append("content", editorData);
     if (data.file[0]) {
       formData.append("file", data.file[0]);
     }
@@ -34,6 +37,13 @@ const CreateBlogPage: React.FC = () => {
     } finally {
       setLoading(false);
     }
+  };
+  const handleEditorChange = (
+    event: any,
+    editor: { getData: () => React.SetStateAction<string> }
+  ) => {
+    setEditorData(editor.getData());
+    console.log({ editorData });
   };
 
   return (
@@ -65,13 +75,19 @@ const CreateBlogPage: React.FC = () => {
           <label htmlFor="content" className="block font-bold mb-2">
             Content
           </label>
-          <textarea
-            id="content"
-            className={`border rounded text-gray-800 w-full p-2 ${
-              errors.content ? "border-red-500" : "border-gray-300"
-            }`}
-            {...register("content", { required: "Content is required" })}
-          />
+          <div className="App bg-black text-black">
+            <CKEditor
+              editor={ClassicEditor}
+              data={editorData} // Provide initial editor content
+              onReady={(editor) => {
+                console.log(
+                  "CKEditor5 React Component is ready to use!",
+                  editor
+                );
+              }}
+              onChange={handleEditorChange}
+            />
+          </div>
           <ErrorMessage
             errors={errors}
             name="content"

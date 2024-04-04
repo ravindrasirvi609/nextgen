@@ -23,6 +23,12 @@ function FeaturedBlogs() {
     fetchBlogs();
   }, []);
 
+  const limitContent = (content: string, limit: number) => {
+    const words = content.split(" ");
+    const limitedWords = words.slice(0, limit);
+    return limitedWords.join(" ");
+  };
+
   return (
     <>
       <div className="bg-black">
@@ -38,12 +44,15 @@ function FeaturedBlogs() {
                   <p className="text-base sm:text-lg text-black mt-4 mb-2 dark:text-neutral-200">
                     {(blog as { title: string }).title}
                   </p>
-                  <p className="text-sm text-neutral-600 dark:text-neutral-400">
-                    {(blog as { content: string }).content
-                      .split(" ")
-                      .slice(0, 10)
-                      .join(" ")}
-                  </p>
+                  <p
+                    className="text-sm text-neutral-600 dark:text-neutral-400"
+                    dangerouslySetInnerHTML={{
+                      __html: limitContent(
+                        (blog as { content: string }).content,
+                        10
+                      ),
+                    }}
+                  />
                 </div>
                 <button className="rounded-full pl-4 pr-4 py-1 text-white flex items-center space-x-1 bg-black mt-2 text-xs sm:text-sm font-bold dark:bg-zinc-800">
                   <Link href={`/blogs/${(blog as { _id: string })._id}`}>

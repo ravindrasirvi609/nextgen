@@ -5,19 +5,25 @@ import Link from "next/link";
 export function MacbookScrollDemo() {
   return (
     <div className="overflow-hidden dark:bg-[#000] bg-white w-full">
-      <MacbookScroll
-        title={
-          <span>
-            <h1 className="font-bold text-3xl">Welcome to NextGEN Leaders</h1>
-            <br />
-            <span className="text-xl">
-              Where Tomorrow&apos;s Leaders Meet Today&apos;s Challenges.
+      <div className="max-w-screen-lg mx-auto">
+        {" "}
+        <MacbookScroll
+          title={
+            <span>
+              <h1 className="font-bold text-4xl md:text-7xl">
+                Welcome to NextGEN Leaders
+              </h1>{" "}
+              <br />
+              <span className="text-lg md:text-4xl">
+                {" "}
+                Where Tomorrow&apos;s Leaders Meet Today&apos;s Challenges.
+              </span>
             </span>
-          </span>
-        }
-        src={`/NextGENv2.jpg`}
-        showGradient={false}
-      />
+          }
+          src={`/NextGENv2.jpg`}
+          showGradient={false}
+        />
+      </div>
     </div>
   );
 }

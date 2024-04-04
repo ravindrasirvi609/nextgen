@@ -44,7 +44,7 @@ export const ParallaxScroll = ({
                 url={el}
                 height={400}
                 width={500}
-                className="h-80 w-full object-cover object-left-top rounded-lg border-4" // Removed unnecessary styles
+                className="h-80 w-full object-cover object-left-top rounded-lg border-2 hover:border-8" // Removed unnecessary styles
               />
             </motion.div>
           ))}
@@ -56,7 +56,7 @@ export const ParallaxScroll = ({
                 url={el}
                 height={400}
                 width={500}
-                className="h-80 w-full object-cover object-left-top rounded-lg border-4" // Removed unnecessary styles
+                className="h-80 w-full object-cover object-left-top rounded-lg border-2 hover:border-8" // Removed unnecessary styles
               />
             </motion.div>
           ))}
@@ -68,7 +68,7 @@ export const ParallaxScroll = ({
                 url={el}
                 height={400}
                 width={500}
-                className="h-80 w-full object-cover object-left-top rounded-lg border-4" // Removed unnecessary styles
+                className="h-80 w-full object-cover object-left-top rounded-lg border-2 hover:border-8" // Removed unnecessary styles
               />
             </motion.div>
           ))}

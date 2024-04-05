@@ -32,7 +32,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       const mailOptions = {
         from: "sirviravindra609@gmail.com",
         to: email,
-        subject: "OPF : Verify your email",
+        subject: "NEXTGEN : Verify your email",
         html: `<!DOCTYPE html>
         <html>
         <head>
@@ -316,7 +316,7 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
       const mailOptions = {
         from: "sirviravindra609@gmail.com",
         to: email,
-        subject: "OPF : Reset your password",
+        subject: "NEXTGEN : Reset your password",
         html: `<!DOCTYPE html>
         <html>
         <head>

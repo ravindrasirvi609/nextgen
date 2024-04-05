@@ -14,19 +14,14 @@ export async function POST(request: NextRequest) {
     const reqBody = await request.json();
 
     // Validate request data
-    if (
-      !reqBody.fullName ||
-      !reqBody.email ||
-      !reqBody.password ||
-      !reqBody.role
-    ) {
+    if (!reqBody.fullName || !reqBody.email || !reqBody.password) {
       return NextResponse.json(
         { error: "Incomplete request data" },
         { status: 400 }
       );
     }
 
-    const { fullName, email, password, role } = reqBody;
+    const { fullName, email, password } = reqBody;
     const existingUser = await User.findOne({ email });
 
     if (existingUser) {
@@ -39,7 +34,7 @@ export async function POST(request: NextRequest) {
     const salt = await bcryptjs.genSalt(SALT_ROUNDS);
     const hashedPassword = await bcryptjs.hash(password, salt);
 
-    const savedUser = await createUser(fullName, email, hashedPassword, role);
+    const savedUser = await createUser(fullName, email, hashedPassword);
 
     await sendVerificationEmail(savedUser.email, savedUser._id);
 
@@ -53,17 +48,11 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function createUser(
-  fullName: string,
-  email: string,
-  password: string,
-  role: string
-) {
+async function createUser(fullName: string, email: string, password: string) {
   const newUser = new User({
     fullName,
     email,
     password,
-    role,
   });
 
   return await newUser.save();

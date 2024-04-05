@@ -2,6 +2,7 @@ import { NextApiResponse } from "next";
 import BlogPost from "@/models/blogModel";
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
+import User from "@/models/userModel";
 
 connect();
 
@@ -13,7 +14,7 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     });
   }
 
-  try {    
+  try {
     const blogData = await req.json();
     const id = blogData.id;
 
@@ -25,6 +26,10 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
     }
 
     const blogPost = await BlogPost.findById(id);
+    const userId = blogPost.author;
+
+    const user = await User.findById(userId);
+    blogPost.author = user.fullName;
 
     if (!blogPost) {
       return NextResponse.json({

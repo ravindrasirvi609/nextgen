@@ -45,22 +45,6 @@ export default function LoginPage() {
             className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm"
           >
             <div className="space-y-6">
-              <div className="relative text-left">
-                <select
-                  {...register("role", { required: true })}
-                  className="block w-full text-gray-800 px-4 py-2 text-sm border-2 hover:bg-gray-100"
-                >
-                  <option value="">Select a role</option>
-                  <option value="user">Student</option>
-                  <option value="organization">Organization</option>
-                </select>
-                {errors.role && typeof errors.role.message === "string" && (
-                  <p className="text-red-500 text-xs mt-1">
-                    {errors.role.message}
-                  </p>
-                )}
-              </div>
-
               <div>
                 <label
                   htmlFor="email"

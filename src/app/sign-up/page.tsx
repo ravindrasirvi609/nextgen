@@ -58,22 +58,6 @@ export default function SignupPage() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="mt-6">
             <div className="space-y-6">
-              <div className="relative text-left">
-                <select
-                  {...register("role", { required: true })}
-                  className="block w-full px-4 py-2 text-sm text-gray-700 border-2 hover:bg-gray-100"
-                >
-                  <option value="" disabled>
-                    Select a role
-                  </option>
-                  <option value="user">Student</option>
-                  <option value="organization">Organization</option>
-                </select>
-                {errors.role && (
-                  <p className="text-red-500 text-xs mt-1">Role is required</p>
-                )}
-              </div>
-
               <div>
                 <label
                   htmlFor="fullName"

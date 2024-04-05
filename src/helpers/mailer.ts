@@ -20,7 +20,6 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         verifyToken: hashedToken,
         verifyTokenExpiry: Date.now() + 3600000,
       });
-      
 
       var transport = nodemailer.createTransport({
         service: "Gmail",

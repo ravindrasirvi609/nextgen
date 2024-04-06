@@ -13,7 +13,7 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const faqs = await FAQ.find({});
+    const faqs = await FAQ.find().sort({ createdAt: -1 });
 
     return NextResponse.json({ data: faqs }, { status: 200 });
   } catch (error) {

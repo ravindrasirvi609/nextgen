@@ -1,6 +1,6 @@
 import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
-import FAQ from "@/models/faqModel";
+import Plan from "@/models/subscriptionModel";
 
 connect();
 
@@ -13,9 +13,8 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    const faqs = await FAQ.find({});
-
-    return NextResponse.json({ data: faqs }, { status: 200 });
+    const Plans = await Plan.find().sort({ createdAt: -1 });
+    return NextResponse.json({ data: Plans }, { status: 200 });
   } catch (error) {
     console.error("Error retrieving FAQs:", error);
     return NextResponse.json(

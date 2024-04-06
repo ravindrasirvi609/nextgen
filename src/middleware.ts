@@ -5,7 +5,6 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl;
   const pathname = url.pathname;
 
-  // Grant access to `/books` without login
   if (pathname === "/books" || pathname === "/membership") {
     return NextResponse.next(); // Allow access
   }

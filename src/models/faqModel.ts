@@ -7,6 +7,6 @@ const faqSchema = new mongoose.Schema({
   updatedAt: { type: Date, default: Date.now },
 });
 
-const FAQ = mongoose.model("Faq", faqSchema);
+const FAQ = mongoose.models.Faq || mongoose.model("Faq", faqSchema);
 
 export default FAQ;

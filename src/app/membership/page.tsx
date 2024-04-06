@@ -1,18 +1,22 @@
+import Link from "next/link";
 import React from "react";
 
 const Membership: React.FC = () => {
   const membershipPlans = [
     {
+      id: 1,
       name: "Basic",
       price: "$9.99/month",
       features: ["Access to 5 magazines", "Limited articles"],
     },
     {
+      id: 2,
       name: "Standard",
       price: "$19.99/month",
       features: ["Access to 10 magazines", "Unlimited articles"],
     },
     {
+      id: 3,
       name: "Premium",
       price: "$29.99/month",
       features: ["Access to all magazines", "Exclusive articles"],
@@ -63,7 +67,7 @@ const Membership: React.FC = () => {
             </div>
             <div className="absolute bottom-0 left-0 w-full">
               <button className="w-full py-3 text-center bg-blue-500 hover:bg-blue-600 text-white font-semibold transition duration-300 transform hover:scale-105">
-                Subscribe
+                <Link href={`/membership/${plan.id}`}> Subscribe</Link>
               </button>
             </div>
           </div>

@@ -17,7 +17,8 @@ export async function POST(req: NextRequest) {
       !reqBody.name ||
       !reqBody.price ||
       !reqBody.duration ||
-      !reqBody.features
+      !reqBody.features ||
+      !reqBody.benefits
     ) {
       return NextResponse.json(
         { error: "Incomplete request data" },
@@ -25,12 +26,13 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const { name, price, duration, features } = reqBody;
+    const { name, price, duration, features, benefits } = reqBody;
     const plan = new Plan({
       name: name,
       price: price,
       features: features,
       duration: duration,
+      benefits: benefits,
     });
     await plan.save();
 

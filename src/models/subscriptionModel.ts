@@ -5,6 +5,7 @@ const planSchema = new mongoose.Schema({
   price: { type: Number, required: true },
   duration: { type: String, required: true },
   features: [{ type: String, required: true }],
+  benefits: [{ type: String, required: true }],
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });

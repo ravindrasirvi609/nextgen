@@ -44,7 +44,7 @@ const Membership: React.FC = () => {
                   {plan.name}
                 </h2>
                 <p className="text-gray-600 mb-4">{plan.price} INR</p>
-                <p className="mb-4 text-black font-bold">{plan.duration}</p>
+                <p className="mb-4 text-black ">{plan.duration}</p>
                 <ul className="list-disc pl-6 text-gray-800 mb-6">
                   {plan.features.map((feature, index) => (
                     <li key={index} className="mb-2">

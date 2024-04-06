@@ -3,13 +3,36 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
-const RazorpayPaymentCapture: React.FC = () => {
+interface planDetails {
+  eventId?: string;
+  price: number;
+  currency: string;
+}
+
+const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
+  const pramsId = params;
+
   const [paymentInitialized, setPaymentInitialized] = useState(false);
-  //      const [planDetails, setPlanDetails] = useState<planDetails>();
+  const [planDetails, setPlanDetails] = useState<planDetails>();
 
   useEffect(() => {
+    getEventDetails(pramsId);
     initializeRazorpay();
   }, []);
+
+  const getEventDetails = async (id: string) => {
+    const response = await axios.post("/api/subscriptionPlans/planDetails", id);
+    console.log("Plan Details", response.data);
+
+    const planDetails = {
+      price: response.data.data.price,
+      currency: "INR",
+      planId: response.data.data._id,
+    };
+    console.log(planDetails);
+
+    setPlanDetails(planDetails);
+  };
 
   const handlePaymentCapture = () => {
     // Add your payment capture logic here
@@ -23,7 +46,7 @@ const RazorpayPaymentCapture: React.FC = () => {
 
     try {
       const payload = {
-        amount: "1000",
+        amount: 1,
         currency: "INR",
         payment_capture: 1,
       };
@@ -31,7 +54,7 @@ const RazorpayPaymentCapture: React.FC = () => {
       const data = response.data;
 
       const options = {
-        name: "OPF",
+        name: "NextGEN Leaders",
         currency: data.currency,
         amount: data.amount,
         order_id: data.id,

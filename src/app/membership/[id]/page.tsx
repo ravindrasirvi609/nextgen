@@ -4,6 +4,9 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 interface planDetails {
+  features?: string[];
+  benefits?: string[];
+  name?: string;
   planId?: string;
   price: number;
   currency: string;
@@ -18,7 +21,7 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
   useEffect(() => {
     getEventDetails(pramsId);
     initializeRazorpay();
-  }, []);
+  }, [pramsId]);
 
   const getEventDetails = async (id: string) => {
     const response = await axios.post("/api/subscriptionPlans/planDetails", id);
@@ -28,14 +31,13 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
       price: response.data.data.price,
       currency: "INR",
       planId: response.data.data._id,
+      name: response.data.data.name,
+      features: response.data.data.features,
+      benefits: response.data.data.benefits,
     };
     console.log(planDetails);
 
     setPlanDetails(planDetails);
-  };
-
-  const handlePaymentCapture = () => {
-    // Add your payment capture logic here
   };
 
   const makePayment = async () => {
@@ -126,21 +128,48 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
     document.body.appendChild(script);
   };
   return (
-    <div className="font-Inter h-screen overflow-auto bg-white py-40">
-      <div className="relative z-10 flex flex-col md:flex-row mt-10 items-center max-w-6xl justify-evenly mx-auto">
-        <div className="md:w-1/3 mb-20 md:mb-0 mx-10">
-          <div className="bg-gradient-to-r from-[#3e4044] to-[#1D2328] p-[1px] rounded-md mb-4">
-            {paymentInitialized && (
-              <button
-                onClick={makePayment}
-                className="bg-gradient-to-r from-[#2E3137] to-[#1D2328] rounded-md w-full py-4 shadow-xl drop-shadow-2xl text-gray-300 font-bold"
-              >
-                Payment
-              </button>
-            )}
-          </div>
+    <div className="font-Inter h-screen overflow-auto bg-white py-40 px-4">
+      <h1 className="text-3xl font-semibold text-center text-black mb-8">
+        Subscribe Now
+      </h1>
+      <div className="max-w-lg mx-auto border border-gray-200 bg-black p-6 rounded-lg shadow-lg transform transition-all duration-500 hover:scale-105">
+        <h2 className="text-xl font-semibold mb-4">
+          Selected Plan : {planDetails?.name}
+        </h2>
+        <p className="text-lg mb-2">
+          Price: {planDetails?.price} {planDetails?.currency}
+        </p>
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold mb-2">Features:</h3>
+          <ul className="list-disc pl-5">
+            {planDetails?.features?.map((feature, index) => (
+              <li key={index}>{feature}</li>
+            ))}
+          </ul>
         </div>
+        <div>
+          <h3 className="text-lg font-semibold mb-2">Benefits:</h3>
+          <ul className="list-disc pl-5">
+            {planDetails?.benefits?.map((benefit, index) => (
+              <li key={index}>{benefit}</li>
+            ))}
+          </ul>
+        </div>
+        <button
+          onClick={makePayment}
+          disabled={!paymentInitialized}
+          className={`w-full py-3 mt-4 bg-blue-500 text-white font-semibold rounded-md shadow-md ${
+            paymentInitialized
+              ? "hover:bg-blue-600"
+              : "opacity-50 cursor-not-allowed"
+          } transition-all duration-300 transform hover:scale-105`}
+        >
+          {paymentInitialized ? "Proceed to Payment" : "Loading..."}
+        </button>
       </div>
+      <footer className="mt-8 text-center text-gray-500">
+        <p>Powered by Razorpay</p>
+      </footer>
     </div>
   );
 };

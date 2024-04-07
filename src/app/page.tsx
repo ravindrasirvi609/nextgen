@@ -18,9 +18,6 @@ export default function Home() {
         <InfiniteMovingCardsDemo />
         <FeaturedBlogs />
       </div>
-      <div className="w-full py-8">
-        <Footer />
-      </div>
     </main>
   );
 }

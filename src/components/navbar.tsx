@@ -34,6 +34,7 @@ export function Navbar({ className }: { className?: string }) {
         </MenuItem>
         <MenuItem setActive={handleClick} active={active} item="About Us">
           <div className="flex flex-col sm:space-y-4 text-sm">
+            <HoveredLink href="/about-us">About Us</HoveredLink>
             <HoveredLink href="/mission-vision">Mission & Vision</HoveredLink>
             <HoveredLink href="/team">Our Team</HoveredLink>
             <HoveredLink href="/testimonials">Testimonials</HoveredLink>

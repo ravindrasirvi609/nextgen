@@ -2,6 +2,7 @@ import { connect } from "@/dbConfig/dbConfig";
 import { NextRequest, NextResponse } from "next/server";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 import RazorpayTransaction from "@/models/transactionModel";
+import User from "@/models/userModel";
 
 connect();
 export async function POST(request: NextRequest) {
@@ -19,6 +20,13 @@ export async function POST(request: NextRequest) {
 
     const { orderId, paymentId, signature, amount, currency, status, plan } =
       requestBody;
+
+    const user = await User.findById(userId);
+    if (!user) {
+      return NextResponse.json({ message: "User not found" }, { status: 404 });
+    }
+    user.plan = plan;
+    await user.save();
 
     const razorpayTransaction = new RazorpayTransaction({
       orderId,

@@ -14,6 +14,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please provide a password"],
   },
+  plan: { type: mongoose.Schema.Types.ObjectId, ref: "Plan" },
   isVerfied: {
     type: Boolean,
     default: false,

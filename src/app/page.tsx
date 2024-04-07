@@ -16,8 +16,8 @@ export default function Home() {
         <GlobeDemo />
         <GoogleGeminiEffectDemo />
         <InfiniteMovingCardsDemo />
+        <FeaturedBlogs />
       </div>
-      <FeaturedBlogs />
       <div className="w-full py-8">
         <Footer />
       </div>

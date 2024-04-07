@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
     console.log("Request body", requestBody);
 
-    const { orderId, paymentId, signature, amount, currency, status } =
+    const { orderId, paymentId, signature, amount, currency, status, plan } =
       requestBody;
 
     const razorpayTransaction = new RazorpayTransaction({
@@ -28,6 +28,7 @@ export async function POST(request: NextRequest) {
       currency,
       status,
       user: userId,
+      plan,
     });
 
     await razorpayTransaction.save();

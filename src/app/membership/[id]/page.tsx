@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import Swal from "sweetalert2";
 
 interface planDetails {
-  eventId?: string;
+  planId?: string;
   price: number;
   currency: string;
 }
@@ -67,6 +67,7 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
             amount: data.amount,
             currency: data.currency,
             status: "success",
+            plan: planDetails?.planId,
           };
 
           const resultRes = await axios.post(

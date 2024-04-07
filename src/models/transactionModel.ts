@@ -9,6 +9,7 @@ const RazorpayTransactionSchema = new mongoose.Schema({
   status: { type: String, required: true },
   createdAt: { type: Date, default: Date.now },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  plan: { type: mongoose.Schema.Types.ObjectId, ref: "Plan" },
 });
 
 const RazorpayTransaction =

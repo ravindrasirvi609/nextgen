@@ -30,6 +30,55 @@ export default function LoginPage() {
     }
   };
 
+  const ForgotPassword = async () => {
+    try {
+      const result = await Swal.fire({
+        title: "Submit your Email",
+        input: "text",
+        inputAttributes: {
+          autocapitalize: "off",
+        },
+        showCancelButton: true,
+        confirmButtonText: "Submit",
+        showLoaderOnConfirm: true,
+        preConfirm: async (login) => {
+          try {
+            const formdata = {
+              email: login,
+            };
+            const response = await axios.post(
+              "/api/users/forgotpassword",
+              formdata
+            );
+            if (response.data.sendEmail) {
+              Swal.fire(
+                "success",
+                "Please Check your mailbox for a new password",
+                "success"
+              );
+              return response.data;
+            } else {
+              throw new Error("Error creating a new password for the user");
+            }
+          } catch (error) {
+            throw new Error("Password reset request failed.");
+          }
+        },
+        allowOutsideClick: () => !Swal.isLoading(),
+      });
+
+      if (result.isConfirmed) {
+        Swal.fire(
+          "success",
+          "Please Check your mailbox for a new password",
+          "success"
+        );
+      }
+    } catch (error) {
+      Swal.fire("error", "Forgot Password Failed", "error");
+    }
+  };
+
   return (
     <div className="relative h-screen bg-white">
       <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
@@ -94,6 +143,15 @@ export default function LoginPage() {
                       </p>
                     )}
                 </div>
+              </div>
+
+              <div className="text-sm">
+                <button
+                  onClick={ForgotPassword}
+                  className="font-semibold text-indigo-300 hover:text-indigo-800"
+                >
+                  Forgot password?
+                </button>
               </div>
 
               <div>

@@ -364,9 +364,9 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
             <div class="container">
                 <h1>Password Reset</h1>
                 <p>
-                    Click <a class="button" href="${process.env.DOMAIN}/resetpassword?token=${hashedToken}">here</a> to reset your password or copy and paste the link below in your browser.
+                    Click <a class="button" href="${process.env.DOMAIN}/reset-password?token=${hashedToken}">here</a> to reset your password or copy and paste the link below in your browser.
                 </p>
-                <p class="reset-link">${process.env.DOMAIN}/resetpassword?token=${hashedToken}</p>
+                <p class="reset-link">${process.env.DOMAIN}/reset-password?token=${hashedToken}</p>
             </div>
         </body>
         </html>

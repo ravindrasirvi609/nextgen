@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 
 export default function ResetPasswordPage() {
   const router = useRouter();
-
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [token, setToken] = useState("");

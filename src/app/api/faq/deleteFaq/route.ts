@@ -13,17 +13,21 @@ export async function DELETE(req: NextRequest) {
       );
     }
 
-    const reqBody = await req.json();
+    const respon = await req.json();
+    const { id } = respon;
 
-    if (!reqBody.id) {
+    if (!id) {
       return NextResponse.json(
         { error: "Incomplete request data" },
         { status: 400 }
       );
     }
 
-    const { id } = reqBody;
-    await FAQ.findByIdAndDelete(id);
+    const deletedFAQ = await FAQ.findByIdAndDelete(id as string);
+
+    if (!deletedFAQ) {
+      return NextResponse.json({ error: "FAQ not found" }, { status: 404 });
+    }
 
     return NextResponse.json(
       { message: "FAQ deleted successfully" },

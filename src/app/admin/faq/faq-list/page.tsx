@@ -19,9 +19,11 @@ const FaqListPage: React.FC = () => {
     }
   };
 
-  const handleDelete = async (faqId: string) => {
+  const handleDelete = async (id: string) => {
     try {
-      await axios.delete(`/api/faq/deleteFaq/${faqId}`);
+      const response = await axios.delete(`/api/faq/deleteFaq`, {
+        data: { id }, // Include id in the request body
+      });
       fetchFaqList();
     } catch (error) {
       console.error("Error deleting FAQ:", error);

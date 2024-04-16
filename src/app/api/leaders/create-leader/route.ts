@@ -52,6 +52,16 @@ export async function POST(req: NextRequest) {
         experience,
       } = Object.fromEntries(formData.entries());
 
+      // Parse JSON strings back into objects
+      const socialMediaLinksValue = formData.get("socialMediaLinks") as string;
+      const parsedSocialMediaLinks = JSON.parse(socialMediaLinksValue);
+      const experienceValue = formData.get("experience") as string;
+      const parsedExperience = JSON.parse(experienceValue);
+      const languagesValue = formData.get("languages") as string;
+      const achievementsValue = formData.get("achievements") as string;
+      const publicationsValue = formData.get("publications") as string;
+      const awardsValue = formData.get("awards") as string;
+
       const newLeader = new Leader({
         name,
         position,
@@ -64,13 +74,14 @@ export async function POST(req: NextRequest) {
         linkedin,
         dateOfBirth,
         nationality,
-        languages,
-        achievements,
-        publications,
-        awards,
-        socialMediaLinks,
-        experience,
+        languages: JSON.parse(languagesValue),
+        achievements: JSON.parse(achievementsValue),
+        publications: JSON.parse(publicationsValue),
+        awards: JSON.parse(awardsValue),
+        socialMediaLinks: parsedSocialMediaLinks,
+        experience: parsedExperience,
       });
+      console.log("New leader:", newLeader);
 
       const savedLeader = await newLeader.save();
       console.log("Leader added successfully:", savedLeader);

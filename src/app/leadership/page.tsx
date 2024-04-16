@@ -1,6 +1,8 @@
-import React from "react";
+"use client";
+import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import axios from "axios";
 
 const Leadership = () => {
   const leaders = [
@@ -44,6 +46,20 @@ const Leadership = () => {
       linkedin: "https://www.linkedin.com/in/michaeljohnson",
     },
   ];
+
+  useEffect(() => {
+    const fetchLeaders = async () => {
+      try {
+        const response = await axios.get("/api/leaders/leaders-list");
+        const data = await response.data;
+        console.log("Leaders data:", data);
+      } catch (error) {
+        console.error("Error fetching leaders:", error);
+      }
+    };
+
+    fetchLeaders();
+  }, []);
 
   return (
     <div className="font-Inter h-screen overflow-auto bg-black py-40 px-4">

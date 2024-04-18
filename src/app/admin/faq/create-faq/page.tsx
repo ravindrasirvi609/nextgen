@@ -14,7 +14,7 @@ const FAQCreatePage: React.FC = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm<FormData>(); // Use formState for type safety
+  } = useForm<FormData>();
 
   const [isLoading, setIsLoading] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -25,7 +25,7 @@ const FAQCreatePage: React.FC = () => {
       await axios.post("/api/faq/createFaq", data);
       console.log("Form submitted successfully!");
       setIsSuccess(true);
-      reset(); // Reset the form after successful submission
+      reset();
     } catch (error) {
       console.error("Error submitting form:", error);
     } finally {

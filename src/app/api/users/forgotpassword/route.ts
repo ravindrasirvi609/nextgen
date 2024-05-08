@@ -12,15 +12,19 @@ export async function POST(request: NextRequest) {
 
     // Validate request data
     if (!email) {
-      return NextResponse.json({ error: "Please provide a valid email" }, { status: 400 });
+      return NextResponse.json(
+        { error: "Please provide a valid email" },
+        { status: 400 }
+      );
     }
 
     const user = await findUserByEmail(email);
-    console.log("user", user);
-    
 
     if (!user) {
-      return NextResponse.json({ error: "User with the provided email not found" }, { status: 400 });
+      return NextResponse.json(
+        { error: "User with the provided email not found" },
+        { status: 400 }
+      );
     }
 
     await sendPasswordResetEmail(user);

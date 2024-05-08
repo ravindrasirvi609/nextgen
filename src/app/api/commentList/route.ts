@@ -7,9 +7,7 @@ connect();
 export async function POST(req: NextRequest, res: NextResponse) {
   if (req.method === "POST") {
     try {
-      console.log("Fetching comments...");
       const { id } = await req.json();
-      console.log("id:", id);
 
       if (!id) {
         return NextResponse.json({
@@ -19,8 +17,6 @@ export async function POST(req: NextRequest, res: NextResponse) {
       }
 
       const comments = await Comment.find({ blog: id });
-      console.log("Comments:", comments);
-
       return NextResponse.json(comments);
     } catch (error) {
       console.error("Error fetching comments:", error);

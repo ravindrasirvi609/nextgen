@@ -17,7 +17,6 @@ const AdvertigmentWithUs: React.FC = () => {
   const onSubmit = async (data: any) => {
     setLoading(true);
 
-    console.log(data);
     const formData = new FormData();
     formData.append("name", data.name);
     formData.append("email", data.email);
@@ -31,15 +30,12 @@ const AdvertigmentWithUs: React.FC = () => {
     formData.append("endDate", data.endDate);
 
     try {
-      console.log("Submitting form data:", formData);
-
       const response = await axios.post(
         "api/advertisement/add-advertisement",
         formData
       );
 
       if (response) {
-        console.log("Form submitted successfully");
         setSuccessMessage("Form submitted successfully!");
         reset();
       } else {

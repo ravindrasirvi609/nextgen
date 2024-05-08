@@ -25,7 +25,6 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
 
   const getEventDetails = async (id: string) => {
     const response = await axios.post("/api/subscriptionPlans/planDetails", id);
-    console.log("Plan Details", response.data);
 
     const planDetails = {
       price: response.data.data.price,
@@ -35,7 +34,6 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
       features: response.data.data.features,
       benefits: response.data.data.benefits,
     };
-    console.log(planDetails);
 
     setPlanDetails(planDetails);
   };
@@ -107,7 +105,6 @@ const RazorpayPaymentCapture: React.FC = ({ params }: any) => {
           }
         },
       };
-      console.log("Invoice", options);
 
       const paymentObject = new (window as any).Razorpay(options);
       paymentObject.open();

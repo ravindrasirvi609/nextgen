@@ -25,7 +25,6 @@ const TestimonialCreatePage: React.FC = () => {
     setIsLoading(true);
     try {
       await axios.post("/api/testimonial/add-testimonial", data);
-      console.log("Form submitted successfully!");
       setIsSuccess(true);
       reset();
     } catch (error) {

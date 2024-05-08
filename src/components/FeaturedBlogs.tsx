@@ -12,7 +12,6 @@ function FeaturedBlogs() {
     const fetchBlogs = async () => {
       try {
         const response = await axios.get("/api/blogList");
-        console.log("Blogs:", response.data);
 
         setBlogs(response.data.slice(0, 5));
       } catch (error) {

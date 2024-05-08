@@ -23,10 +23,7 @@ const CreateBlogPage: React.FC = () => {
     }
     setLoading(true);
     try {
-      console.log("Submitting form data:", formData);
-
       const response = await axios.post("/api/createBlog", formData);
-      console.log("Blog post created successfully:", response.data);
       setSuccessMessage("Blog post created successfully");
       reset();
     } catch (error) {

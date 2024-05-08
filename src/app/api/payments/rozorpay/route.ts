@@ -32,7 +32,11 @@ export async function POST(req: NextRequest) {
         amount: response.amount,
       });
     } catch (err) {
-      console.log(err);
+      console.error("Error creating order:", err);
+      return NextResponse.json(
+        { error: "An error occurred while creating order" },
+        { status: 500 }
+      );
     }
   }
 }

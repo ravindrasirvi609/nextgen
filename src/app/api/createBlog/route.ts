@@ -29,7 +29,6 @@ export async function POST(req: NextRequest) {
     const base64Data = Buffer.from(fileBuffer).toString("base64");
     const fileUri = "data:" + mimeType + ";" + encoding + "," + base64Data;
     const res = await uploadToCloudinary(fileUri, file.name);
-    console.log("Cloudinary response:", res);
 
     let message = "failure";
     let imgUrl = "";
@@ -48,7 +47,6 @@ export async function POST(req: NextRequest) {
       });
 
       const savedBlogPost = await newBlogPost.save();
-      console.log("Blog post added successfully:", savedBlogPost);
       return NextResponse.json({
         message: "Blog post added successfully",
         blogPost: savedBlogPost,

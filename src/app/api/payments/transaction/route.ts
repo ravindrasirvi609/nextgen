@@ -16,7 +16,6 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
-    console.log("Request body", requestBody);
 
     const { orderId, paymentId, signature, amount, currency, status, plan } =
       requestBody;

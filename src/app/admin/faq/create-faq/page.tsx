@@ -23,7 +23,6 @@ const FAQCreatePage: React.FC = () => {
     setIsLoading(true);
     try {
       await axios.post("/api/faq/createFaq", data);
-      console.log("Form submitted successfully!");
       setIsSuccess(true);
       reset();
     } catch (error) {

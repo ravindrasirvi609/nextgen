@@ -14,9 +14,6 @@ export async function GET() {
       const user = await User.findById(userId);
       blogPost.author = user.fullName;
     }
-
-    console.log("Blog posts fetched successfully:", blogPosts);
-
     return NextResponse.json(blogPosts);
   } catch (error) {
     console.error("Error fetching blog posts:", error);

@@ -13,8 +13,6 @@ async function generateInvoiceHtml(orderId: string): Promise<string> {
       orderId,
     }).exec();
 
-    console.log("Transaction Data:", transactionData);
-
     const userData = await User.findById(transactionData.user);
 
     const planDetails = await Plan.findById(transactionData.plan);
@@ -246,7 +244,6 @@ export async function POST(req: NextRequest) {
   try {
     // Extract order ID from the request body
     const requestBody = await req.json();
-    console.log("Request Body:", requestBody);
 
     // Validate request body and order ID
     if (!requestBody || !requestBody.orderId) {
@@ -269,8 +266,6 @@ export async function POST(req: NextRequest) {
     const page = await browser.newPage();
     await page.setContent(invoiceHtml);
     const pdfBuffer = await page.pdf();
-    console.log("PDF generated successfully", pdfBuffer);
-
     await browser.close();
 
     return new NextResponse(pdfBuffer, {

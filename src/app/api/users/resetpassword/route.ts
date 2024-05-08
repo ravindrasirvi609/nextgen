@@ -12,11 +12,9 @@ export async function POST(request: NextRequest) {
   try {
     // Parse the incoming JSON payload
     const reqBody = await request.json();
-    console.log("POST request", reqBody);
     const { password, token } = reqBody;
 
     // Verify the provided token
-    console.log("Reset token", token);
     const decodedToken = await User.findOne({
       forgotPasswordToken: token,
       forgotPasswordTokenExpiry: { $gt: Date.now() },
@@ -24,12 +22,9 @@ export async function POST(request: NextRequest) {
     if (!decodedToken) {
       return NextResponse.json({ error: "Invalid token" }, { status: 400 });
     }
-    console.log("decodedToken", decodedToken);
-    
 
     // Find the user in the database based on the userId from the token
     const user = await User.findById(decodedToken._id);
-    console.log("user", user);
 
     if (!user) {
       // If the user is not found, return an error response
@@ -48,7 +43,7 @@ export async function POST(request: NextRequest) {
     const response = NextResponse.json({
       message: "Password reset Successfully",
       success: true,
-  })
+    });
 
     return response;
   } catch (error: any) {

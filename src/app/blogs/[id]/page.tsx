@@ -52,7 +52,6 @@ const Blog: React.FC = ({ params }: any) => {
       setError(null);
       try {
         const response = await axios.post(`/api/commentList`, { id: id }); // Corrected query parameter syntax
-        console.log("response", response.data);
         setComments(response.data);
       } catch (error) {
         console.error("Error fetching comments:", error); // Corrected console log message
@@ -83,7 +82,6 @@ const Blog: React.FC = ({ params }: any) => {
   const onSubmit = async (data: any, reset: () => void) => {
     try {
       const response = await axios.post("/api/addComment", data);
-      console.log("Comment added successfully:", response.data);
       reset();
     } catch (error) {
       console.error("Error adding comment:", error);

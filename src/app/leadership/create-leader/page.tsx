@@ -148,7 +148,6 @@ const LeaderForm = () => {
       const result = response.data;
 
       if (result.message === "Leader added successfully") {
-        console.log("Leader added successfully:", result.leader);
         reset();
       } else {
         console.error("Failed to add leader:", result.error);

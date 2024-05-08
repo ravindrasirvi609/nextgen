@@ -14,7 +14,6 @@ export function InfiniteMovingCardsDemo() {
   const fetchTestimonials = async () => {
     try {
       const response = await axios.get("/api/testimonial/testimonial-list");
-      console.log("Testimonials:", response.data);
 
       setTestimonials(response.data.data);
     } catch (error) {

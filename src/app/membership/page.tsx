@@ -20,7 +20,6 @@ const Membership: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get("/api/subscriptionPlans/planList");
-      console.log(response.data.data);
       const membershipPlans: MembershipPlan[] = response.data.data;
       setMembershipPlans(membershipPlans);
     };

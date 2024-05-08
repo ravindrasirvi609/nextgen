@@ -24,7 +24,6 @@ export async function POST(req: NextRequest) {
     const base64Data = Buffer.from(fileBuffer).toString("base64");
     const fileUri = "data:" + mimeType + ";" + encoding + "," + base64Data;
     const res = await uploadToCloudinary(fileUri, file.name);
-    console.log("Cloudinary response:", res);
 
     let message = "failure";
     let imgUrl = "";
@@ -81,10 +80,7 @@ export async function POST(req: NextRequest) {
         socialMediaLinks: parsedSocialMediaLinks,
         experience: parsedExperience,
       });
-      console.log("New leader:", newLeader);
-
       const savedLeader = await newLeader.save();
-      console.log("Leader added successfully:", savedLeader);
       return NextResponse.json({
         message: "Leader added successfully",
         leader: savedLeader,

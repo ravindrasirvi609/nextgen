@@ -50,6 +50,7 @@ const Blogs: React.FC = () => {
             content: string;
             author: string;
             createdAt: string;
+            authorName: string;
           }) => (
             <div key={blog._id} className="bg-white p-6 shadow-lg rounded-lg">
               <Link href={`/blogs/${blog._id}`}>
@@ -72,7 +73,7 @@ const Blogs: React.FC = () => {
                   }}
                 />
 
-                <p className="text-gray-500">Author: {blog.author}</p>
+                <p className="text-gray-500">Author: {blog.authorName}</p>
                 <p className="text-gray-600">
                   Created at: {formatDate(blog.createdAt)}
                 </p>

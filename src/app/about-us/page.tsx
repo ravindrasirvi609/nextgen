@@ -61,10 +61,10 @@ const AboutUsPage: React.FC = () => {
           Have questions or feedback? We&apos;d love to hear from you! Reach out
           to us at{" "}
           <a
-            href="mailto:contact@nextgenleaders.com"
+            href="mailto:editor@nextgenleaders.vip"
             className="text-blue-500 hover:underline"
           >
-            contact@nextgenleaders.com
+            editor@nextgenleaders.vip
           </a>{" "}
           and connect with us on{" "}
           <a

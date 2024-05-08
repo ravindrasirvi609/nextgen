@@ -25,13 +25,17 @@ export async function POST(req: NextRequest, res: NextApiResponse) {
       });
     }
 
-    const blogPost = await BlogPost.findById(id);
-    const userId = blogPost.author;
+    const blogPostData = await BlogPost.findById(id);
+    const userId = blogPostData.author;
 
     const user = await User.findById(userId);
-    blogPost.author = user.fullName;
 
-    if (!blogPost) {
+    const blogPost = {
+      ...blogPostData._doc,
+      author: user.fullName,
+    };
+
+    if (!blogPostData) {
       return NextResponse.json({
         error: "Not Found",
         message: `Blog post with ID ${id} not found`,

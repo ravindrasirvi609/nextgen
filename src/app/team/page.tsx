@@ -25,7 +25,7 @@ const Team: React.FC = () => {
       designation: "Web Developer",
       experience: 3,
       imageUrl:
-        "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://res.cloudinary.com/dyndwmvma/image/upload/v1713152513/product-images/DSC_0003_skgayq.jpg",
       description:
         "Ravindra is a skilled web developer with a passion for building innovative and user-friendly websites. With over 3 years of experience in the industry, Ravindra has a deep understanding of web development technologies and best practices. He is dedicated to delivering high-quality websites that meet client needs and exceed expectations.",
     },

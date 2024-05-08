@@ -62,12 +62,12 @@ const Leadership = () => {
                 <div className="flex flex-col gap-2">
                   <p className="text-gray-600 mb-1">
                     Email:{" "}
-                    <a
+                    <Link
                       href={`mailto:${leader.email}`}
                       className="text-blue-600 hover:underline"
                     >
                       {leader.email}
-                    </a>
+                    </Link>
                   </p>
                   <p className="text-gray-600 mb-1">Phone: {leader.phone}</p>
                   <p className="text-gray-600 mb-1">
@@ -78,14 +78,14 @@ const Leadership = () => {
                   </p>
                   <p className="text-gray-600 mb-1">
                     LinkedIn:{" "}
-                    <a
+                    <Link
                       href={leader.linkedin}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-blue-600 hover:underline"
                     >
                       {leader.linkedin}
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </div>

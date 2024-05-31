@@ -3,6 +3,25 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Blog - Nexgen Leaders",
+  description:
+    "Explore the latest articles, insights, and trends in startups and the pharmaceutical industry on the Nexgen Leaders blog. Stay informed with expert analysis and commentary.",
+  keywords:
+    "Nexgen Leaders blog, startup news, pharma news, pharmaceutical industry blog, business insights, innovation trends, biotech, healthcare, entrepreneur articles",
+  robots: "index, follow",
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@NextgenLeaders", // Replace with your Twitter handle if available
+    title: "Blog - Nexgen Leaders",
+    description:
+      "Explore the latest articles, insights, and trends in startups and the pharmaceutical industry on the Nexgen Leaders blog. Stay informed with expert analysis and commentary.",
+    images: "https://www.nextgenleaders.vip/path-to-your-image.jpg", // Replace with actual path to an image
+  },
+};
 
 const Blogs: React.FC = () => {
   const [blogs, setBlogs] = useState([]);

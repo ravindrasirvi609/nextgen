@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
+import { Metadata } from "next";
 
 interface Leader {
   _id: string;
@@ -16,6 +17,24 @@ interface Leader {
   linkedin: string;
   imageUrl: string;
 }
+
+export const metadata: Metadata = {
+  title: "Leadership - Nexgen Leaders",
+  description:
+    "Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth.",
+  keywords:
+    "Nexgen Leaders leadership, leadership team, startup news, pharma news, pharmaceutical industry experts, business leaders, innovation, biotech, healthcare, entrepreneurship",
+  robots: "index, follow",
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@NextgenLeaders", // Replace with your Twitter handle if available
+    title: "Leadership - Nexgen Leaders",
+    description:
+      "Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth.",
+    images: "https://www.nextgenleaders.vip/path-to-your-image.jpg", // Replace with actual path to an image
+  },
+};
 
 const Leadership = () => {
   const [leaders, setLeaders] = React.useState([]);

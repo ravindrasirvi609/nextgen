@@ -8,8 +8,20 @@ import Footer from "@/components/footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "NEXTGEN",
-  description: "Created NEXTGEN",
+  title: "Nexgen Leaders - Your Source for Startup and Pharma News",
+  description:
+    "Stay updated with the latest news and insights on startups and the pharmaceutical industry. Nexgen Leaders brings you in-depth articles, trends, and analysis.",
+  keywords:
+    "startups, pharma news, pharmaceutical industry, startup news, business news, innovation, biotech, healthcare, entrepreneur news",
+  robots: "index, follow",
+  twitter: {
+    card: "summary_large_image",
+    site: "@NextgenLeaders", // Replace with your Twitter handle if available
+    title: "Nexgen Leaders - Your Source for Startup and Pharma News",
+    description:
+      "Stay updated with the latest news and insights on startups and the pharmaceutical industry. Nexgen Leaders brings you in-depth articles, trends, and analysis.",
+    images: "https://www.nextgenleaders.vip/path-to-your-image.jpg", // Replace with actual path to an image
+  },
 };
 
 export default function RootLayout({

@@ -1,4 +1,23 @@
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "About Us - Nexgen Leaders",
+  description:
+    "Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission.",
+  keywords:
+    "about Nexgen Leaders, startup news, pharma news, pharmaceutical industry insights, business news, innovation, biotech, healthcare, entrepreneur news",
+  robots: "index, follow",
+
+  twitter: {
+    card: "summary_large_image",
+    site: "@NextgenLeaders", // Replace with your Twitter handle if available
+    title: "About Us - Nexgen Leaders",
+    description:
+      "Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission.",
+    images: "https://www.nextgenleaders.vip/path-to-your-image.jpg", // Replace with actual path to an image
+  },
+};
 
 const AboutUsPage: React.FC = () => {
   return (

@@ -4,6 +4,7 @@ import "./globals.css";
 import { NavigationMenu } from "@/components/ui/navigation-menu";
 import { Navbar } from "@/components/navbar";
 import Footer from "@/components/footer";
+import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,6 +35,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Navbar />
         {children}
+        <Analytics />
         <div className="w-full py-8">
           <Footer />
         </div>

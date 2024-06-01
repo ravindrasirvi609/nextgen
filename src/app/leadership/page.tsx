@@ -3,7 +3,7 @@ import React, { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import axios from "axios";
-import { Metadata } from "next";
+import Head from "next/head";
 
 interface Leader {
   _id: string;
@@ -18,26 +18,9 @@ interface Leader {
   imageUrl: string;
 }
 
-export const metadata: Metadata = {
-  title: "Leadership - Nexgen Leaders",
-  description:
-    "Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth.",
-  keywords:
-    "Nexgen Leaders leadership, leadership team, startup news, pharma news, pharmaceutical industry experts, business leaders, innovation, biotech, healthcare, entrepreneurship",
-  robots: "index, follow",
-
-  twitter: {
-    card: "summary_large_image",
-    site: "@NextgenLeaders", // Replace with your Twitter handle if available
-    title: "Leadership - Nexgen Leaders",
-    description:
-      "Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth.",
-    images: "https://www.nextgenleaders.vip/path-to-your-image.jpg", // Replace with actual path to an image
-  },
-};
-
 const Leadership = () => {
-  const [leaders, setLeaders] = React.useState([]);
+  const [leaders, setLeaders] = React.useState<Leader[]>([]);
+
   useEffect(() => {
     const fetchLeaders = async () => {
       try {
@@ -54,16 +37,50 @@ const Leadership = () => {
 
   return (
     <div className="font-Inter h-screen overflow-auto bg-black py-40 px-4">
+      <Head>
+        <title>Leadership - Nexgen Leaders</title>
+        <meta
+          name="description"
+          content="Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth."
+        />
+        <meta
+          name="keywords"
+          content="Nexgen Leaders leadership, leadership team, startup news, pharma news, pharmaceutical industry experts, business leaders, innovation, biotech, healthcare, entrepreneurship"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="Leadership - Nexgen Leaders" />
+        <meta
+          property="og:description"
+          content="Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.nextgenleaders.vip/leadership"
+        />
+        <meta
+          property="og:image"
+          content="https://www.nextgenleaders.vip/path-to-your-image.jpg"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@NextgenLeaders" />
+        <meta name="twitter:title" content="Leadership - Nexgen Leaders" />
+        <meta
+          name="twitter:description"
+          content="Meet the leadership team at Nexgen Leaders. Our experts bring you the latest news and insights on startups and the pharmaceutical industry, driving innovation and growth."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.nextgenleaders.vip/path-to-your-image.jpg"
+        />
+      </Head>
       <h1 className="text-6xl font-semibold text-center text-white mb-8">
         NextGEN Leaders
       </h1>
       <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {leaders.map((leader: Leader) => (
           <Link href={`/leadership/${leader._id}`} key={leader._id}>
-            <div
-              key={leader._id}
-              className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-lg"
-            >
+            <div className="bg-white rounded-lg shadow-md overflow-hidden transition duration-300 transform hover:scale-105 hover:shadow-lg">
               <Image
                 src={leader.imageUrl}
                 alt={leader.name}

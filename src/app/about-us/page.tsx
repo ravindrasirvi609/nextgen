@@ -1,27 +1,48 @@
+"use client";
 import { Metadata } from "next";
 import React from "react";
-
-export const metadata: Metadata = {
-  title: "About Us - Nexgen Leaders",
-  description:
-    "Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission.",
-  keywords:
-    "about Nexgen Leaders, startup news, pharma news, pharmaceutical industry insights, business news, innovation, biotech, healthcare, entrepreneur news",
-  robots: "index, follow",
-
-  twitter: {
-    card: "summary_large_image",
-    site: "@NextgenLeaders", // Replace with your Twitter handle if available
-    title: "About Us - Nexgen Leaders",
-    description:
-      "Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission.",
-    images: "https://www.nextgenleaders.vip/path-to-your-image.jpg", // Replace with actual path to an image
-  },
-};
+import Head from "next/head";
 
 const AboutUsPage: React.FC = () => {
   return (
     <div className="bg-gray-100 min-h-screen py-28">
+      <Head>
+        <title>About Us - Nexgen Leaders</title>
+        <meta
+          name="description"
+          content="Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission."
+        />
+        <meta
+          name="keywords"
+          content="about Nexgen Leaders, startup news, pharma news, pharmaceutical industry insights, business news, innovation, biotech, healthcare, entrepreneur news"
+        />
+        <meta name="robots" content="index, follow" />
+        <meta property="og:title" content="About Us - Nexgen Leaders" />
+        <meta
+          property="og:description"
+          content="Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://www.nextgenleaders.vip/about-us"
+        />
+        <meta
+          property="og:image"
+          content="https://www.nextgenleaders.vip/path-to-your-image.jpg"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@NextgenLeaders" />
+        <meta name="twitter:title" content="About Us - Nexgen Leaders" />
+        <meta
+          name="twitter:description"
+          content="Learn more about Nexgen Leaders, your premier source for the latest news and insights on startups and the pharmaceutical industry. Meet our team and discover our mission."
+        />
+        <meta
+          name="twitter:image"
+          content="https://www.nextgenleaders.vip/path-to-your-image.jpg"
+        />
+      </Head>
       <div className="container mx-auto py-12 px-4">
         <h1 className="text-3xl font-bold text-gray-800 mb-6">
           About NextGen Leaders Magazine

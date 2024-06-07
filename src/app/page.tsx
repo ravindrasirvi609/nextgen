@@ -46,7 +46,6 @@ export default function Home() {
           <FeaturedBlogs />
         </div>
       </main>
-      <Footer />
     </>
   );
 }

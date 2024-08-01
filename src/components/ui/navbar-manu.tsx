@@ -1,5 +1,7 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -12,16 +14,18 @@ const transition = {
   restSpeed: 0.001,
 };
 
-export const MenuItem = ({
-  setActive,
-  active,
-  item,
-  children,
-}: {
+interface MenuItemProps {
   setActive: (item: string | null) => void;
   active: string | null;
   item: string;
   children?: React.ReactNode;
+}
+
+export const MenuItem: React.FC<MenuItemProps> = ({
+  setActive,
+  active,
+  item,
+  children,
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -47,78 +51,78 @@ export const MenuItem = ({
       onClick={handleClick}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="relative"
+      className="relative group"
     >
       <motion.p
-        transition={{ duration: 0.3 }}
-        className="cursor-pointer text-black hover:opacity-[0.9] dark:text-white"
+        whileHover={{ scale: 1.05 }}
+        transition={{ duration: 0.2 }}
+        className="cursor-pointer text-black hover:text-blue-600 dark:text-white dark:hover:text-blue-400 font-medium"
       >
         {item}
       </motion.p>
-      {isOpen && children && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.85, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
-          transition={transition}
-          className="absolute top-full left-1/2 transform -translate-x-1/2"
-        >
+      <AnimatePresence>
+        {isOpen && children && (
           <motion.div
-            layoutId="active"
-            className="bg-white dark:bg-black backdrop-blur-sm rounded-2xl overflow-hidden border border-black/[0.2] dark:border-white/[0.2] shadow-xl"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 10 }}
+            transition={transition}
+            className="absolute top-full left-1/2 transform -translate-x-1/2 z-10"
           >
-            <motion.div layout className="w-max h-full p-4">
-              {children}
-            </motion.div>
+            <div className="bg-white dark:bg-gray-800 rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700 shadow-lg">
+              <div className="w-max h-full p-4">{children}</div>
+            </div>
           </motion.div>
-        </motion.div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 };
 
-export const Menu = ({
-  setActive,
-  children,
-}: {
+interface MenuProps {
   setActive: (item: string | null) => void;
   children: React.ReactNode;
-}) => {
+}
+
+export const Menu: React.FC<MenuProps> = ({ setActive, children }) => {
   return (
-    <nav className="relative rounded-full border border-transparent dark:bg-black dark:border-white/[0.2] bg-white shadow-input flex justify-center space-x-4 px-8 py-6">
+    <nav className="relative rounded-full border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 shadow-lg flex justify-center space-x-6 px-8 py-4">
       {children}
     </nav>
   );
 };
 
-export const ProductItem = ({
-  title,
-  description,
-  href,
-  src,
-}: {
+interface ProductItemProps {
   title: string;
   description: string;
   href: string;
   src: string;
+}
+
+export const ProductItem: React.FC<ProductItemProps> = ({
+  title,
+  description,
+  href,
+  src,
 }) => {
   return (
-    <a href={href} className="flex space-x-2">
+    <Link href={href} className="flex space-x-3 items-center group">
       <Image
         src={src}
-        width={140}
-        height={70}
+        width={80}
+        height={80}
         alt={title}
-        className="flex-shrink-0 rounded-md shadow-2xl"
+        className="rounded-md shadow-md group-hover:shadow-lg transition-shadow duration-200"
       />
       <div>
-        <h4 className="text-xl font-bold mb-1 text-black dark:text-white">
+        <h4 className="text-lg font-semibold mb-1 text-black dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-200">
           {title}
         </h4>
-        <p className="text-neutral-700 text-sm max-w-[10rem] dark:text-neutral-300">
+        <p className="text-gray-600 text-sm max-w-[12rem] dark:text-gray-300">
           {description}
         </p>
       </div>
-    </a>
+    </Link>
   );
 };
 
@@ -126,7 +130,7 @@ export const HoveredLink = ({ children, ...rest }: any) => {
   return (
     <Link
       {...rest}
-      className="text-neutral-700 dark:text-neutral-200 hover:text-black"
+      className="text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-200"
     >
       {children}
     </Link>
